@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Accordion, AccordionItem } from '@/components/ui/accordion';
+import { Button } from '@/components/ui/button.tsx';
+import { Card, CardContent } from '@/components/ui/card.tsx';
+import { Accordion, AccordionItem } from '@/components/ui/accordion.tsx';
 
 export default function TruFloLandingPage() {
   return (
