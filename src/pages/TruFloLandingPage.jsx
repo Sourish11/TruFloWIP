@@ -123,12 +123,7 @@ export default function TruFloLandingPage() {
           className="p-2 border rounded-md w-full max-w-md"
         />
         <Button className="mt-2">Notify Me</Button>
-      </section>
-
-      {/* Privacy */}
-      <footer className="text-sm text-center mt-10">
-        <a href="/privacy" className="underline">Privacy Policy</a> · <a href="/terms" className="underline">Terms & Conditions</a>
-      </footer>
+      </section>      
     </div>
   );
 }
