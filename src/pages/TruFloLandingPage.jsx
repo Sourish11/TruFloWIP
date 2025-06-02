@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button.tsx';
 import { Card, CardContent } from '@/components/ui/card.tsx';
 import { Accordion, AccordionItem } from '@/components/ui/accordion.tsx';
+import NotifyForm from '@/components/ui/NotifyForm';
 
 export default function TruFloLandingPage() {
   return (
@@ -13,6 +14,9 @@ export default function TruFloLandingPage() {
         <div className="flex justify-center gap-4">
           <Button>Join Beta / Join Discord</Button>
           <Button variant="outline">Get Early Access</Button>
+          <h2 className="text-xl font-semibold mt-8">Join Early Access</h2>
+          <NotifyForm />
+          <br></br>
         </div>
       </section>
 
