@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-white dark:bg-neutral-900 text-center py-6 mt-10">
+    <footer className="bg-black dark:bg-neutral-900 text-center py-6 ">
       <div className="text-sm text-gray-600 dark:text-gray-400">
         © {new Date().getFullYear()} TruFlo. All rights reserved.
       </div>
