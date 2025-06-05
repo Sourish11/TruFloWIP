@@ -1,34 +1,24 @@
 import { Button } from '@/components/ui/button.tsx';
 import { Card, CardContent } from '@/components/ui/card.tsx';
 import { Accordion, AccordionItem } from '@/components/ui/accordion.tsx';
+import NotifyForm from '@/components/ui/NotifyForm';
 import landingVideo from '../assets/landing-video.mp4';
 export default function TruFloLandingPage() {
   return (
-    <div className="space-y-16  w-full bg-neutral-950 text-white">
+    <div className="space-y-12 px-6 py-10 max-w-7xl mx-auto">
 
-<section className=" w-full min-h-[90vh] bg-[url('./assets/background.png')] bg-cover bg-center relative overflow-hidden text-center flex items-center justify-center">
-
-
-  <div className="relative z-10 space-y-6">
-    <h1 className="text-5xl md:text-6xl font-extrabold leading-tight">
-      Unlock Your <span className="text-indigo-500">Tru</span> Potential
-    </h1>
-    <p className="text-xl text-neutral-300">
-      Escape distractions. Build habits. Achieve your goals.
-    </p>
-    <div className="flex flex-col sm:flex-row justify-center gap-4">
-      <button className="bg-blue-600 hover:bg-blue-700 text-black px-6 py-3 rounded-md shadow">
-        Join Beta / Join Discord
-      </button>
-      <button className="px-6 py-3 border border-neutral-300 text-black rounded-md hover:bg-white/10">
-        Get Early Access
-      </button>
-    </div>
-  </div>
-
-  {/* Smooth gradient into next section */}
-  <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-neutral-950" />
-</section>
+      {/* Hero Section */}
+      <section className="text-center space-y-6">
+        <h1 className="text-5xl font-bold">Unlock Your Tru Potential</h1>
+        <p className="text-xl">Escape distractions. Build habits. Achieve your goals.</p>
+        <div className="flex justify-center gap-4">
+          <Button>Join Beta / Join Discord</Button>
+          <Button variant="outline">Get Early Access</Button>
+          <h2 className="text-xl font-semibold mt-8">Join Early Access</h2>
+          <NotifyForm />
+          <br></br>
+        </div>
+      </section>
 
 
 
