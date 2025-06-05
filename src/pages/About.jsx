@@ -7,8 +7,8 @@ export default function About() {
       <ul className="list-disc pl-5">
         <li><strong>Sourish Kumar</strong> - Founder & CEO</li>
         <li><strong>Freddie Letzer</strong> - Co-Founder & CFO</li>
-        <li><strong>Leo Nguyen</strong> - CTO</li>
-        <li><strong>David Nguyen</strong> - Tech Director</li>
+        <li><strong>Leo Nguyen</strong> - Web Developer</li>
+        <li><strong>David Nguyen</strong> - UI/UX Developer</li>
       </ul>
     </div>
   );

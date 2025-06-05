@@ -13,7 +13,6 @@ export default function TruFloLandingPage() {
         <p className="text-xl">Escape distractions. Build habits. Achieve your goals.</p>
         <div className="flex justify-center gap-4">
           <Button>Join Beta / Join Discord</Button>
-          <Button variant="outline">Get Early Access</Button>
           <h2 className="text-xl font-semibold mt-8">Join Early Access</h2>
           <NotifyForm />
           <br></br>
