@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button.tsx';
 import { Card, CardContent } from '@/components/ui/card.tsx';
 import { Accordion, AccordionItem } from '@/components/ui/accordion.tsx';
+import NotifyForm from '@/components/ui/NotifyForm';
 import landingVideo from '../assets/landing-video.mp4';
 
 export default function TruFloLandingPage() {
