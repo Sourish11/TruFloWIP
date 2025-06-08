@@ -12,7 +12,7 @@ export default function TruFloLandingPage() {
         <h1 className="text-5xl font-bold">Unlock Your Tru Potential</h1>
         <p className="text-xl">Escape distractions. Build habits. Achieve your goals.</p>
         <div className="flex justify-center gap-4">
-          <Button onClick={() => window.open('https://discord.gg/eZHfGJTRNh', '_blank', 'noopener,noreferrer')}>Join Beta / Join Discord</Button>
+          <Button onClick={() => window.open('https://discord.gg/eZHfGJTRNh', '_blank', 'noopener,noreferrer')}>Join Discord</Button>
         </div>
         <div className="inline-block text-center mt-4">
           <h2 className="text-xl font-semibold mt-8">Join Early Access: </h2>
