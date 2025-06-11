@@ -3,10 +3,13 @@ import { Card, CardContent } from '@/components/ui/card.tsx';
 import { Accordion, AccordionItem } from '@/components/ui/accordion.tsx';
 import NotifyForm from '@/components/ui/NotifyForm';
 import landingVideo from '../assets/landing-video.mp4';
+import AuthButtons from '../components/ui/AuthButtons';
 export default function TruFloLandingPage() {
   return (
     <div className="space-y-12 px-6 py-10 max-w-7xl mx-auto">
-
+      <div className="absolute top-6 right-6 z-50">
+        <AuthButtons />
+      </div>
       {/* Hero Section */}
       <section className="text-center space-y-6 bg-[url('./assets/background.png')]">
         <h1 className="text-5xl font-bold">Unlock Your Tru Potential</h1>

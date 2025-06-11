@@ -8,6 +8,8 @@ import Privacy from './pages/Privacy.jsx';
 import Support from './pages/Support.jsx';
 import Header from './components/ui/Header.jsx';
 import Footer from './components/ui/Footer.jsx';
+import Login from './pages/Login.jsx';
+import Signup from './pages/Signup.jsx';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/support" element={<Support />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </main>
       <Footer />
