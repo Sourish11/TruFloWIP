@@ -8,11 +8,11 @@ export default function TruFloLandingPage() {
     <div className="space-y-12 px-6 py-10 max-w-7xl mx-auto">
 
       {/* Hero Section */}
-      <section className="text-center space-y-6">
+      <section className="text-center space-y-6 bg-[url('./assets/background.png')]">
         <h1 className="text-5xl font-bold">Unlock Your Tru Potential</h1>
         <p className="text-xl">Escape distractions. Build habits. Achieve your goals.</p>
         <div className="flex justify-center gap-4">
-          <Button>Join Beta / Join Discord</Button>
+          <Button onClick={() => window.open('https://discord.gg/eZHfGJTRNh', '_blank', 'noopener,noreferrer')}>Join Discord</Button>
         </div>
         <div className="inline-block text-center mt-4">
           <h2 className="text-xl font-semibold mt-8">Join Early Access: </h2>
@@ -107,7 +107,7 @@ export default function TruFloLandingPage() {
       <section className="bg-neutral-900 p-10 rounded-2xl shadow-lg space-y-4">
         <h2 className="text-3xl font-semibold">Community</h2>
         <p>💬 Join our Discord to connect with early adopters!</p>
-        <button className="text-black mt-2">Join Discord</button>
+        <button className="text-black mt-2" onClick={() => window.open('https://discord.gg/eZHfGJTRNh', '_blank', 'noopener,noreferrer')}>Join Discord</button>
       </section>
 
       {/* Roadmap */}
