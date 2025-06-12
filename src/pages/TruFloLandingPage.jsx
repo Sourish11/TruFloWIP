@@ -3,11 +3,13 @@ import { Card, CardContent } from '@/components/ui/card.tsx';
 import { Accordion, AccordionItem } from '@/components/ui/accordion.tsx';
 import NotifyForm from '@/components/ui/NotifyForm';
 import landingVideo from '../assets/landing-video.mp4';
-
+import AuthButtons from '../components/ui/AuthButtons';
 export default function TruFloLandingPage() {
   return (
     <div className="space-y-16 w-full bg-neutral-950 text-white">
-
+      <div className="absolute top-6 right-6 z-50">
+        <AuthButtons />
+      </div>
       {/* Hero Section */}
       <section className="w-full min-h-[90vh] bg-[url('./assets/background.png')] bg-cover bg-center relative overflow-hidden text-center flex items-center justify-center">
         <div className="relative z-10 space-y-6">
@@ -193,6 +195,5 @@ export default function TruFloLandingPage() {
       </section>
     </div>
 
-    </div>
   );
 }
