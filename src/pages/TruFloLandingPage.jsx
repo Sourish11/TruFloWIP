@@ -18,7 +18,7 @@ export default function TruFloLandingPage() {
             Escape distractions. Build habits. Achieve your goals.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-blue-600 hover:bg-blue-700 text-black px-6 py-3 rounded-md shadow">
+            <button className="bg-blue-600 hover:bg-blue-700 text-black px-6 py-3 rounded-md shadow" onClick={() => window.open('https://discord.gg/eZHfGJTRNh', '_blank', 'noopener,noreferrer')}>
               Join Beta / Join Discord
             </button>
             <button className="px-6 py-3 border border-neutral-300 text-black rounded-md hover:bg-white/10">
@@ -29,6 +29,7 @@ export default function TruFloLandingPage() {
             <h2 className="text-xl font-semibold">Join Early Access: </h2>
             <NotifyForm />
           </div>
+
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-neutral-950" />
       </section>
@@ -125,6 +126,72 @@ export default function TruFloLandingPage() {
           <p className="text-lg font-medium">Whether you're a student, a creator, or just someone trying to reclaim your time — <strong>TruFlo meets you where you are, and helps you flow forward.</strong></p>
         </section>
       </section>
+
+
+      {/* Problem Section */}
+      <section className="bg-neutral-900 p-10 rounded-2xl shadow-lg space-y-4">
+        <h2 className="text-3xl font-semibold">You’re not lazy. You’re overwhelmed.</h2>
+        <ul className="list-disc pl-5 text-lg text-neutral-300">
+          <li>📉 Task abandonment</li>
+          <li>😞 Guilt from time-wasting</li>
+          <li>🔄 Confusion around prioritization</li>
+        </ul>
+      </section>
+
+      {/* Market Validation */}
+      <section className="bg-neutral-900 p-10 rounded-2xl shadow-lg space-y-4">
+        <h2 className="text-3xl font-semibold">Market Validation & Impact</h2>
+        <p>🎯 Total Addressable Market: Millions of productivity-seeking individuals</p>
+        <p>📊 Backed by survey insights and productivity trends</p>
+      </section>
+
+      {/* Community Section */}
+      <section className="bg-neutral-900 p-10 rounded-2xl shadow-lg space-y-4">
+        <h2 className="text-3xl font-semibold">Community</h2>
+        <p>💬 Join our Discord to connect with early adopters!</p>
+        <button className="text-black mt-2" onClick={() => window.open('https://discord.gg/eZHfGJTRNh', '_blank', 'noopener,noreferrer')}>Join Discord</button>
+      </section>
+
+      {/* Roadmap */}
+      <section className="bg-neutral-900 p-10 rounded-2xl shadow-lg space-y-4">
+        <h2 className="text-3xl font-semibold">Roadmap</h2>
+        <ul className="list-disc pl-5 text-neutral-300">
+          <li>Q2: Beta launch</li>
+          <li>Q3: Premium features rollout</li>
+          <li>Q4: Mobile expansion + AI V2</li>
+        </ul>
+      </section>
+
+      {/* Team */}
+      <section className="bg-neutral-900 p-10 rounded-2xl shadow-lg space-y-4">
+        <h2 className="text-3xl font-semibold">Meet the Team</h2>
+        <p>👥 Passionate developers, designers, and productivity nerds on a mission to help you thrive.</p>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-neutral-900 p-10 rounded-2xl shadow-lg space-y-4">
+        <h2 className="text-3xl font-semibold">FAQs</h2>
+        <Accordion>
+          <AccordionItem title="What is TruFlo?">
+            TruFlo is a habit-building productivity app using AI and gamification to help you stay focused.
+          </AccordionItem>
+          <AccordionItem title="Is there a free version?">
+            Yes! You can get started for free and upgrade later if you'd like.
+          </AccordionItem>
+        </Accordion>
+      </section>
+
+      {/* Email Signup */}
+      <section className="bg-neutral-900 p-10 rounded-2xl shadow-lg space-y-4">
+        <h2 className="text-3xl font-semibold">Join the Waitlist</h2>
+        <input
+          type="email"
+          placeholder="Enter your email"
+          className="p-3 border border-neutral-700 bg-neutral-800 rounded-md w-full max-w-md text-white placeholder-neutral-500"
+        />
+        <button className="text-black mt-2">Notify Me</button>
+      </section>
+    </div>
 
     </div>
   );
