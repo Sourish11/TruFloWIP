@@ -195,6 +195,5 @@ export default function TruFloLandingPage() {
       </section>
     </div>
 
-    </div>
   );
 }
