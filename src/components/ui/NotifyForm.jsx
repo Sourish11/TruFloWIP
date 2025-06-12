@@ -25,7 +25,7 @@ export default function NotifyForm() {
       />
       <button
         type="submit"
-        className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
+        className="px-4 py-2 bg-indigo-600 text-black rounded hover:bg-indigo-700"
       >
         Notify Me
       </button>
