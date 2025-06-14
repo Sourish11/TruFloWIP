@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
 import Contact from './pages/Contact.jsx';
@@ -12,10 +12,12 @@ import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
 import AppPage from './pages/AppPage.jsx';
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+  const hideNavigationBarAndFooter = location.pathname.startsWith("/app");
   return (
-    <Router>
-      <Header />
+    <>
+      {!hideNavigationBarAndFooter && <Header />}
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -30,9 +32,14 @@ function App() {
           <Route path="/app" element={<AppPage />} />
         </Routes>
       </main>
-      <Footer />
+      {!hideNavigationBarAndFooter && <Footer />}
+    </>
+  );
+}
+export default function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }
-
-export default App;
