@@ -11,6 +11,8 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await login(email, password);
+    // If login is successful, redirect:
+    if (!error) navigate('/app');
   };
 
   return (
