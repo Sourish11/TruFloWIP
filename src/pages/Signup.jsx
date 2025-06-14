@@ -18,6 +18,7 @@ export default function Signup() {
       return;
     }
     await signup(email, password);
+    if (!error) navigate('/app');
   };
 
   return (
