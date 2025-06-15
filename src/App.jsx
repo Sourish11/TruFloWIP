@@ -16,6 +16,7 @@ import ChallengesSection from "./app/ChallengesSection";
 import LeaderboardSection from "./app/LeaderboardSection";
 import ProfileSection from "./app/ProfileSection";
 import SettingsSection from "./app/SettingsSection";
+import { ThemeProvider } from "./context/ThemeContext";
 
 function AppContent() {
   const location = useLocation();
@@ -51,7 +52,9 @@ function AppContent() {
 export default function App() {
   return (
     <Router>
-      <AppContent />
+      <ThemeProvider>
+        <AppContent />
+      </ThemeProvider>
     </Router>
   );
 }
