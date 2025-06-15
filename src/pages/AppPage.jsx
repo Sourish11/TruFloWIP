@@ -26,9 +26,9 @@ export default function AppPage() {
     if (!user) return null;
 
     return (
-        <div className="flex h-screen w-screen bg-neutral-950 text-white">
+        <div className="flex h-screen w-screen bg-white text-black dark:bg-neutral-950 dark:text-white">
             {/* Left Pane */}
-            <div className="w-1/5 h-full bg-neutral-900 p-6 flex flex-col">
+            <div className="w-1/5 h-full bg-gray-100 text-black dark:bg-neutral-900 dark:text-white p-6 flex flex-col">
                 <div className="font-bold text-lg mb-8">{user.email}</div>
                 <nav className="flex flex-col gap-4">
                     {sections.map((section) => (
@@ -56,7 +56,7 @@ export default function AppPage() {
                 </button>
             </div>
             {/* Right Pane */}
-            <div className="flex-1 h-full p-10 overflow-y-auto">
+            <div className="flex-1 h-full p-10 bg-white text-black dark:bg-neutral-950 dark:text-white overflow-y-auto">
                 <Outlet />
             </div>
         </div>
