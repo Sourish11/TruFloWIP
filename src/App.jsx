@@ -11,6 +11,11 @@ import Footer from './components/ui/Footer.jsx';
 import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
 import AppPage from './pages/AppPage.jsx';
+import HomeSection from "./app/HomeSection";
+import ChallengesSection from "./app/ChallengesSection";
+import LeaderboardSection from "./app/LeaderboardSection";
+import ProfileSection from "./app/ProfileSection";
+import SettingsSection from "./app/SettingsSection";
 
 function AppContent() {
   const location = useLocation();
@@ -29,7 +34,14 @@ function AppContent() {
           <Route path="/support" element={<Support />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/app" element={<AppPage />} />
+          <Route path="/app" element={<AppPage />}>
+            <Route index element={<HomeSection />} />
+            <Route path="home" element={<HomeSection />} />
+            <Route path="challenges" element={<ChallengesSection />} />
+            <Route path="leaderboard" element={<LeaderboardSection />} />
+            <Route path="profile" element={<ProfileSection />} />
+            <Route path="settings" element={<SettingsSection />} />
+          </Route>
         </Routes>
       </main>
       {!hideNavigationBarAndFooter && <Footer />}
