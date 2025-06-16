@@ -1,6 +1,8 @@
 import { getAuth, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { useNavigate, NavLink, Outlet } from "react-router-dom";
+import { useNavigate, NavLink, Outlet, useLocation } from "react-router-dom";
+import { db } from "../firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 const sections = [
     { key: "home", label: "Home" },
@@ -10,18 +12,33 @@ const sections = [
     { key: "settings", label: "Settings" },
 ];
 
+function getGreeting() {// Function to get greeting based on time of day
+    const hour = new Date().getHours();
+    if (hour < 12) return "Good morning";
+    if (hour < 18) return "Good afternoon";
+    return "Good evening";
+}
+
 export default function AppPage() {
     const [user, setUser] = useState(null);
+    const [username, setUsername] = useState("");
     const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         const auth = getAuth();
-        const unsubscribe = auth.onAuthStateChanged((u) => {
-            if (u) setUser(u);
-            else navigate("/login");
+        const unsubscribe = auth.onAuthStateChanged(async (u) => {
+            if (u) {
+                setUser(u);
+                // Fetch username from Firestore
+                const userDoc = await getDoc(doc(db, "users", u.uid));
+                setUsername(userDoc.exists() ? userDoc.data().username || "" : "");
+            } else {
+                navigate("/login");
+            }
         });
         return unsubscribe;
-    }, [navigate]);
+    }, [navigate, location.key]); // refetch username on navigation
 
     if (!user) return null;
 
@@ -29,7 +46,10 @@ export default function AppPage() {
         <div className="flex h-screen w-screen bg-white text-black dark:bg-neutral-950 dark:text-white">
             {/* Left Pane */}
             <div className="w-1/5 h-full bg-gray-100 text-black dark:bg-neutral-900 dark:text-white p-6 flex flex-col">
-                <div className="font-bold text-lg mb-8">{user.email}</div>
+                <div className="text-2xl font-semibold mb-6">
+                    {getGreeting()}
+                    {username ? `, ${username}` : user.email ? `, ${user.email}` : ""}!
+                </div>
                 <nav className="flex flex-col gap-4">
                     {sections.map((section) => (
                         <NavLink
