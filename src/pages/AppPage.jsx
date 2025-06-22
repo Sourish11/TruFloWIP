@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, NavLink, Outlet, useLocation } from "react-router-dom";
 import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
+import SurveyForm from "../components/ui/SurveyForm.jsx";
 
 const sections = [
     { key: "home", label: "Home" },
@@ -24,8 +25,20 @@ export default function AppPage() {
     const [username, setUsername] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
+    const [showSurveyPrompt, setShowSurveyPrompt] = useState(false);
 
     useEffect(() => {
+        const checkSurvey = async () => {
+            const auth = getAuth();
+            const user = auth.currentUser;
+            if (user) {
+                const userDoc = await getDoc(doc(db, "users", user.uid));
+                if (!userDoc.exists() || !userDoc.data().surveyCompleted) {
+                    setShowSurveyPrompt(true);
+                }
+            }
+        };
+        checkSurvey();
         const auth = getAuth();
         const unsubscribe = auth.onAuthStateChanged(async (u) => {
             if (u) {
@@ -41,9 +54,14 @@ export default function AppPage() {
     }, [navigate, location.key]); // refetch username on navigation
 
     if (!user) return null;
-
+    const handleSurveyClose = () => setShowSurveyPrompt(false);
+    const handleSurveyComplete = () => setShowSurveyPrompt(false);
     return (
         <div className="flex h-screen w-screen bg-white text-black dark:bg-neutral-950 dark:text-white">
+            {/* Survey Form Floating on Right */}
+            {showSurveyPrompt && (
+                <SurveyForm onClose={handleSurveyClose} onComplete={handleSurveyComplete} />
+            )}
             {/* Left Pane */}
             <div className="w-1/5 h-full bg-gray-100 text-black dark:bg-neutral-900 dark:text-white p-6 flex flex-col">
                 <div className="text-2xl font-semibold mb-6">
