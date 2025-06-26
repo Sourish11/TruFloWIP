@@ -4,16 +4,17 @@ import { useNavigate, NavLink, Outlet, useLocation } from "react-router-dom";
 import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import SurveyForm from "../components/ui/SurveyForm.jsx";
+import { Button } from "../components/ui/Button";
 
 const sections = [
-    { key: "home", label: "Home" },
-    { key: "challenges", label: "Challenges" },
-    { key: "leaderboard", label: "Leaderboard" },
-    { key: "profile", label: "Profile" },
-    { key: "settings", label: "Settings" },
+    { key: "home", label: "Home", icon: "🏠" },
+    { key: "challenges", label: "Challenges", icon: "🎯" },
+    { key: "leaderboard", label: "Leaderboard", icon: "🏆" },
+    { key: "profile", label: "Profile", icon: "👤" },
+    { key: "settings", label: "Settings", icon: "⚙️" },
 ];
 
-function getGreeting() {// Function to get greeting based on time of day
+function getGreeting() {
     const hour = new Date().getHours();
     if (hour < 12) return "Good morning";
     if (hour < 18) return "Good afternoon";
@@ -23,6 +24,7 @@ function getGreeting() {// Function to get greeting based on time of day
 export default function AppPage() {
     const [user, setUser] = useState(null);
     const [username, setUsername] = useState("");
+    const [sidebarOpen, setSidebarOpen] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
     const [showSurveyPrompt, setShowSurveyPrompt] = useState(false);
@@ -43,7 +45,6 @@ export default function AppPage() {
         const unsubscribe = auth.onAuthStateChanged(async (u) => {
             if (u) {
                 setUser(u);
-                // Fetch username from Firestore
                 const userDoc = await getDoc(doc(db, "users", u.uid));
                 setUsername(userDoc.exists() ? userDoc.data().username || "" : "");
             } else {
@@ -51,51 +52,122 @@ export default function AppPage() {
             }
         });
         return unsubscribe;
-    }, [navigate, location.key]); // refetch username on navigation
+    }, [navigate, location.key]);
 
-    if (!user) return null;
+    const handleLogout = async () => {
+        await signOut(getAuth());
+        navigate("/login");
+    };
+
+    if (!user) {
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="spinner" />
+            </div>
+        );
+    }
     const handleSurveyClose = () => setShowSurveyPrompt(false);
     const handleSurveyComplete = () => setShowSurveyPrompt(false);
     return (
-        <div className="flex h-screen w-screen bg-white text-black dark:bg-neutral-950 dark:text-white">
+        <div className="flex h-screen">
             {/* Survey Form Floating on Right */}
             {showSurveyPrompt && (
                 <SurveyForm onClose={handleSurveyClose} onComplete={handleSurveyComplete} />
             )}
-            {/* Left Pane */}
-            <div className="w-1/5 h-full bg-gray-100 text-black dark:bg-neutral-900 dark:text-white p-6 flex flex-col">
-                <div className="text-2xl font-semibold mb-6">
-                    {getGreeting()}
-                    {username ? `, ${username}` : user.email ? `, ${user.email}` : ""}!
-                </div>
-                <nav className="flex flex-col gap-4">
-                    {sections.map((section) => (
-                        <NavLink
-                            key={section.key}
-                            to={`/app/${section.key}`}
-                            className={({ isActive }) =>
-                                `text-left px-2 py-1 rounded ${isActive ? "bg-indigo-700 font-bold" : "hover:bg-neutral-800"
-                                }`
-                            }
-                            end
+            {/* Mobile Sidebar Overlay */}
+            {sidebarOpen && (
+                <div 
+                    className="fixed inset-0 z-40 bg-black/50 lg:hidden"
+                    onClick={() => setSidebarOpen(false)}
+                />
+            )}
+
+            {/* Sidebar */}
+            <div className={`
+                fixed inset-y-0 left-0 z-50 w-64 glass-nav transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0
+                ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+            `}>
+                <div className="flex flex-col h-full">
+                    {/* Header */}
+                    <div className="flex items-center justify-between p-6 border-b border-white/10">
+                        <div>
+                            <h2 className="text-lg font-semibold text-white">
+                                {getGreeting()}
+                            </h2>
+                            <p className="text-sm text-white/70">
+                                {username || user.email}
+                            </p>
+                        </div>
+                        <button
+                            className="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
+                            onClick={() => setSidebarOpen(false)}
                         >
-                            {section.label}
-                        </NavLink>
-                    ))}
-                </nav>
-                <button
-                    className="mt-auto px-4 py-2 bg-indigo-600 text-white rounded"
-                    onClick={() => {
-                        signOut(getAuth());
-                        navigate("/login");
-                    }}
-                >
-                    Log Out
-                </button>
+                            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    {/* Navigation */}
+                    <nav className="flex-1 p-4 space-y-2">
+                        {sections.map((section) => (
+                            <NavLink
+                                key={section.key}
+                                to={`/app/${section.key}`}
+                                className={({ isActive }) =>
+                                    `flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
+                                        isActive 
+                                            ? "bg-white/20 text-white font-medium shadow-lg" 
+                                            : "text-white/80 hover:text-white hover:bg-white/10"
+                                    }`
+                                }
+                                onClick={() => setSidebarOpen(false)}
+                            >
+                                <span className="text-lg">{section.icon}</span>
+                                <span>{section.label}</span>
+                            </NavLink>
+                        ))}
+                    </nav>
+
+                    {/* Logout Button */}
+                    <div className="p-4 border-t border-white/10">
+                        <Button
+                            variant="glass"
+                            onClick={handleLogout}
+                            className="w-full"
+                        >
+                            Log Out
+                        </Button>
+                    </div>
+                </div>
             </div>
-            {/* Right Pane */}
-            <div className="flex-1 h-full p-10 bg-white text-black dark:bg-neutral-950 dark:text-white overflow-y-auto">
-                <Outlet />
+
+            {/* Main Content */}
+            <div className="flex-1 flex flex-col overflow-hidden">
+                {/* Mobile Header */}
+                <div className="lg:hidden glass-nav p-4">
+                    <div className="flex items-center justify-between">
+                        <button
+                            className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+                            onClick={() => setSidebarOpen(true)}
+                        >
+                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                        <h1 className="text-lg font-semibold text-white">
+                            TruFlo
+                        </h1>
+                        <div className="w-10" />
+                    </div>
+                </div>
+
+                {/* Page Content */}
+                <main className="flex-1 overflow-y-auto p-6">
+                    <div className="max-w-7xl mx-auto">
+                        <Outlet />
+                    </div>
+                </main>
             </div>
         </div>
     );
