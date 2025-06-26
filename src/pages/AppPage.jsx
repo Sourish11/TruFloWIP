@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, NavLink, Outlet, useLocation } from "react-router-dom";
 import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
+import SurveyForm from "../components/ui/SurveyForm.jsx";
 import { Button } from "../components/ui/Button";
 
 const sections = [
@@ -26,8 +27,20 @@ export default function AppPage() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
+    const [showSurveyPrompt, setShowSurveyPrompt] = useState(false);
 
     useEffect(() => {
+        const checkSurvey = async () => {
+            const auth = getAuth();
+            const user = auth.currentUser;
+            if (user) {
+                const userDoc = await getDoc(doc(db, "users", user.uid));
+                if (!userDoc.exists() || !userDoc.data().surveyCompleted) {
+                    setShowSurveyPrompt(true);
+                }
+            }
+        };
+        checkSurvey();
         const auth = getAuth();
         const unsubscribe = auth.onAuthStateChanged(async (u) => {
             if (u) {
@@ -53,9 +66,14 @@ export default function AppPage() {
             </div>
         );
     }
-
+    const handleSurveyClose = () => setShowSurveyPrompt(false);
+    const handleSurveyComplete = () => setShowSurveyPrompt(false);
     return (
         <div className="flex h-screen">
+            {/* Survey Form Floating on Right */}
+            {showSurveyPrompt && (
+                <SurveyForm onClose={handleSurveyClose} onComplete={handleSurveyComplete} />
+            )}
             {/* Mobile Sidebar Overlay */}
             {sidebarOpen && (
                 <div 
