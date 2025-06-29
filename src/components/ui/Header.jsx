@@ -17,9 +17,26 @@ export default function Header() {
     return unsubscribe;
   }, [auth]);
 
+  const handleHomeClick = (e) => {
+    e.preventDefault();
+    // Scroll to the top of the page smoothly
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  const handleTryForFree = () => {
+    if (user) {
+      navigate('/app');
+    } else {
+      navigate('/login');
+    }
+  };
+
   const navItems = [
+    { href: '#', label: 'Home', onClick: handleHomeClick },
     { href: '/#about', label: 'About' },
-    { href: '/#features', label: 'Features' },
     { href: '/pricing', label: 'Pricing' },
     { href: '/support', label: 'Support' },
   ];
@@ -35,7 +52,7 @@ export default function Header() {
               alt="TruFlo Logo"
               className="h-8 w-auto"
             />
-            <span className="text-xl font-bold text-white">
+            <span className="text-xl font-bold text-white font-heading">
               TruFlo
             </span>
           </Link>
@@ -43,14 +60,25 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-white/90 hover:text-white transition-colors duration-300 font-medium text-sm relative group"
-              >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              item.onClick ? (
+                <button
+                  key={item.label}
+                  onClick={item.onClick}
+                  className="text-white/90 hover:text-white transition-colors duration-300 font-medium text-sm relative group font-ui"
+                >
+                  {item.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 transition-all duration-300 group-hover:w-full"></span>
+                </button>
+              ) : (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="text-white/90 hover:text-white transition-colors duration-300 font-medium text-sm relative group font-ui"
+                >
+                  {item.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              )
             ))}
           </nav>
 
@@ -58,7 +86,7 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-3">
             {user ? (
               <div className="flex items-center space-x-3">
-                <span className="text-sm text-white/80 font-medium">
+                <span className="text-sm text-white/80 font-medium font-body">
                   Welcome, {user.email.split('@')[0]}
                 </span>
                 <Button
@@ -70,22 +98,13 @@ export default function Header() {
                 </Button>
               </div>
             ) : (
-              <>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => navigate('/login')}
-                >
-                  Log In
-                </Button>
-                <Button
-                  variant="glass"
-                  size="sm"
-                  onClick={() => navigate('/signup')}
-                >
-                  Sign Up
-                </Button>
-              </>
+              <Button
+                variant="glass"
+                size="sm"
+                onClick={handleTryForFree}
+              >
+                Try for Free
+              </Button>
             )}
           </div>
 
@@ -114,14 +133,27 @@ export default function Header() {
           <div className="md:hidden mt-4 pt-4 border-t border-white/20">
             <nav className="flex flex-col space-y-3">
               {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="text-white/90 hover:text-white transition-colors duration-300 py-2 font-medium"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </a>
+                item.onClick ? (
+                  <button
+                    key={item.label}
+                    onClick={(e) => {
+                      item.onClick(e);
+                      setIsMenuOpen(false);
+                    }}
+                    className="text-white/90 hover:text-white transition-colors duration-300 py-2 font-medium text-left font-ui"
+                  >
+                    {item.label}
+                  </button>
+                ) : (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className="text-white/90 hover:text-white transition-colors duration-300 py-2 font-medium font-ui"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                )
               ))}
               <div className="pt-3 border-t border-white/20">
                 {user ? (
@@ -137,30 +169,17 @@ export default function Header() {
                     Dashboard
                   </Button>
                 ) : (
-                  <div className="space-y-2">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => {
-                        navigate('/login');
-                        setIsMenuOpen(false);
-                      }}
-                      className="w-full"
-                    >
-                      Log In
-                    </Button>
-                    <Button
-                      variant="glass"
-                      size="sm"
-                      onClick={() => {
-                        navigate('/signup');
-                        setIsMenuOpen(false);
-                      }}
-                      className="w-full"
-                    >
-                      Sign Up
-                    </Button>
-                  </div>
+                  <Button
+                    variant="glass"
+                    size="sm"
+                    onClick={() => {
+                      handleTryForFree();
+                      setIsMenuOpen(false);
+                    }}
+                    className="w-full"
+                  >
+                    Try for Free
+                  </Button>
                 )}
               </div>
             </nav>

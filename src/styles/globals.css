@@ -37,7 +37,7 @@
   --glass-bg-dark: rgba(17, 24, 39, 0.2);
   --glass-border-dark: rgba(75, 85, 99, 0.3);
 
-  /* Font Families */
+  /* Font Families - Updated Typography System */
   --font-heading: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-ui: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -57,7 +57,7 @@
   --space-24: 12rem;   /* 192px */
 }
 
-/* Base Styles - NO GLOWING EFFECTS */
+/* Base Styles */
 * {
   box-sizing: border-box;
   border: none;
@@ -88,6 +88,48 @@ body {
   -moz-osx-font-smoothing: grayscale;
   position: relative;
   overflow-x: hidden;
+  transition: all 0.5s ease;
+}
+
+/* Mood-based background variations */
+body.mood-energized::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(34, 197, 94, 0.1) 0%,
+    rgba(34, 197, 94, 0.2) 50%,
+    rgba(0, 0, 0, 0.4) 85%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+body.mood-focused::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(59, 130, 246, 0.1) 0%,
+    rgba(59, 130, 246, 0.2) 50%,
+    rgba(0, 0, 0, 0.4) 85%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+body.mood-meh::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(107, 114, 128, 0.1) 0%,
+    rgba(107, 114, 128, 0.2) 50%,
+    rgba(0, 0, 0, 0.4) 85%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+body.mood-overwhelmed::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(239, 68, 68, 0.1) 0%,
+    rgba(239, 68, 68, 0.2) 50%,
+    rgba(0, 0, 0, 0.4) 85%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
 }
 
 /* Background layer - blurred wallpaper */
@@ -122,6 +164,7 @@ body::after {
   );
   z-index: -1;
   pointer-events: none;
+  transition: all 0.5s ease;
 }
 
 /* Content wrapper - completely sharp */
@@ -151,7 +194,22 @@ body::after {
   );
 }
 
-/* Typography - Optimized Heading Sizes with Sora Font */
+/* Typography System Implementation */
+
+/* Font Family Utilities */
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-ui {
+  font-family: var(--font-ui);
+}
+
+/* Typography - Enhanced Heading Sizes with Sora Font */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
@@ -294,14 +352,14 @@ a:hover {
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* Focus styles for accessibility - NO GLOWING */
+/* Focus styles for accessibility */
 *:focus {
   outline: 2px solid rgba(255, 255, 255, 0.6);
   outline-offset: 2px;
   box-shadow: none;
 }
 
-/* Glass Morphism Base Classes - NO GLOWING EFFECTS */
+/* Glass Morphism Base Classes */
 .glass {
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
@@ -458,31 +516,54 @@ a:hover {
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  margin-top: 15px;
   padding: 0 var(--space-4);
 }
 
-/* Animation utilities - NO GLOWING ANIMATIONS */
+/* Enhanced Animation utilities */
 .animate-fade-in {
-  animation: fadeIn 0.6s ease-in-out;
+  animation: fadeIn 0.8s ease-in-out;
 }
 
 .animate-slide-up {
-  animation: slideUp 0.6s ease-out;
+  animation: slideUp 0.8s ease-out;
 }
 
 .animate-float {
-  animation: float 3s ease-in-out infinite;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Enhanced brain emoji pulse animation */
+@keyframes brainPulse {
+  0%, 100% { 
+    transform: scale(1);
+    filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.3));
+  }
+  50% { 
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 16px rgba(139, 92, 246, 0.6));
+  }
+}
+
+.animate-brain-pulse {
+  animation: brainPulse 3s ease-in-out infinite;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
@@ -491,8 +572,9 @@ a:hover {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-20px) rotate(1deg); }
+  66% { transform: translateY(-10px) rotate(-1deg); }
 }
 
 /* Loading spinner */
@@ -536,7 +618,7 @@ body {
   display: none;
 }
 
-/* Gradient text utilities - NO GLOWING */
+/* Enhanced Gradient text utilities */
 .gradient-text {
   background: linear-gradient(135deg, var(--purple-400), var(--blue-400));
   -webkit-background-clip: text;
@@ -553,7 +635,7 @@ body {
   text-shadow: none;
 }
 
-/* Button hover effects - NO GLOWING */
+/* Button hover effects */
 .btn-hover-lift {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -657,7 +739,7 @@ body {
   }
 }
 
-/* Remove any potential borders from the viewport - NO GLOWING */
+/* Remove any potential borders from the viewport */
 html, body, #root {
   border: none !important;
   outline: none !important;
@@ -673,7 +755,7 @@ html, body {
   overflow-x: hidden;
 }
 
-/* Remove default browser styling - NO GLOWING */
+/* Remove default browser styling */
 * {
   border: none;
   outline: none;
@@ -798,4 +880,15 @@ h1, h2, h3, h4, h5, h6 {
 .visual-hierarchy p {
   max-width: 600px;
   margin: 0 auto;
+}
+
+/* Confetti animation support */
+.confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
 }
