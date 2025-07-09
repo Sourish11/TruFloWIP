@@ -84,10 +84,10 @@ export default function MoodPickerModal({ isOpen, onClose, onMoodSelect }) {
 
   const getMoodQuote = (mood) => {
     const quotes = {
-      'Energized': "Perfect! Let's channel that energy into crushing your goals today! 🚀",
-      'Focused': "Great mindset! You're ready to tackle complex tasks with clarity. 🎯",
-      'Meh': "We all have these days. Let's start with something small and build momentum. 💪",
-      'Overwhelmed': "Take a breath. Let's break things down into manageable pieces. 🌱"
+      'Energized': "Perfect! Let's channel that energy into crushing your goals today!",
+      'Focused': "Great mindset! You're ready to tackle complex tasks with clarity.",
+      'Meh': "We all have these days. Let's start with something small and build momentum.",
+      'Overwhelmed': "Take a breath. Let's break things down into manageable pieces."
     };
     return quotes[mood?.label] || '';
   };
@@ -123,7 +123,7 @@ export default function MoodPickerModal({ isOpen, onClose, onMoodSelect }) {
                   How are you feeling right now?
                 </h4>
                 <p className="text-white/80 text-lg max-w-3xl mx-auto leading-relaxed font-body">
-                  Your mood shapes your productivity. Let's find the perfect tasks for how you're feeling today.
+                  Your mood shapes your productivity. Let's see what we can do to help you get started!
                 </p>
               </div>
               
@@ -201,28 +201,6 @@ export default function MoodPickerModal({ isOpen, onClose, onMoodSelect }) {
                               <span className="text-white/90 font-medium text-sm font-body">{task}</span>
                             </div>
                           ))}
-                        </div>
-                      </div>
-
-                      {/* Action buttons */}
-                      <div className="text-center space-y-4">
-                        <button className="bg-white/20 hover:bg-white/30 text-white font-semibold px-8 py-3 rounded-xl border border-white/30 transition-all duration-300 hover:scale-105 hover:shadow-lg backdrop-blur-sm font-ui">
-                          Start with {selectedMood.label.toLowerCase()} tasks →
-                        </button>
-                        
-                        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                          <button 
-                            onClick={() => window.open('/signup', '_blank')}
-                            className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg font-ui"
-                          >
-                            Sign Up for Full Experience
-                          </button>
-                          <button 
-                            onClick={() => window.open('https://discord.gg/eZHfGJTRNh', '_blank')}
-                            className="glass-button text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg font-ui"
-                          >
-                            Join Our Community
-                          </button>
                         </div>
                       </div>
                     </div>
