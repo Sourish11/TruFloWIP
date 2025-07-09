@@ -126,40 +126,36 @@ export default function TruFloLandingPage() {
 
   const testimonials = [
     {
-      name: 'Dr. Candace Wade',
-      position: 'Senior Research Scientist',
-      company: 'Innovation Labs',
+      name: 'Candace Wade',
+      position: 'Program Manager, Center for Entrepreneurship',
+      company: 'University of Cincinnati (1819 Innovation Hub / CEAS Venture Lab & Center for Entrepreneurship)',
       image: candaceWade,
-      quote: 'TruFlo\'s mood-aware approach revolutionized how I manage my research workflow. The AI perfectly adapts to my energy levels throughout the day.',
-      credentials: 'PhD in Cognitive Psychology, 15+ years in behavioral research',
-      demo: 'Dr. Wade used TruFlo during her intensive research periods, finding that the mood recognition helped her tackle complex analytical work during peak focus times. The app\'s adaptive scheduling increased her research output by 40%.'
+      quote: 'TruFlo’s mood-based gamification aligns with how real behavior change happens. It makes staying productive feel intuitive and genuinely rewarding.',
+      credentials: 'Manages and designs entrepreneurial programs, events, and student initiatives; supports STEM commercialization',
     },
     {
-      name: 'Prof. Jason Heikenfeld',
+      name: 'Jason Heikenfeld',
       position: 'Professor of Engineering',
       company: 'University of Cincinnati',
       image: jasonHeikenfeld,
-      quote: 'As someone who juggles teaching, research, and innovation, TruFlo\'s personalized task management has been a game-changer for my productivity.',
-      credentials: 'Professor of Electrical Engineering, 50+ patents, NSF CAREER Award recipient',
-      demo: 'Professor Heikenfeld integrated TruFlo into his academic routine, using it to balance lecture preparation, research projects, and student mentoring. The mood-based scheduling helped him optimize his most creative hours for breakthrough innovations.'
+      quote: 'TruFlo’s emphasis on aligning work with emotional state is both novel and grounded in science. Its approach to time and energy management could be highly valuable in demanding professional environments.',
+      credentials: 'A Serial Entreprenur, Fellow of the National Academy of Inventors; over 50 patents and recognized leadership in wearable biosensors, flexible electronics, electrowetting and optoelectronics research',
     },
     {
       name: 'Samuel Baker',
-      position: 'Creative Director & Entrepreneur',
-      company: 'Digital Innovation Studio',
+      position: 'Program Director',
+      company: ' Flywheel Social Enterprise Hub',
       image: samuelBaker,
-      quote: 'TruFlo understands that creativity can\'t be forced. It helps me channel my natural rhythms into productive creative sessions that actually produce results.',
+      quote: 'I’ve battled with distractions too, and TruFlo feels like the key. I’m genuinely excited to see it become real.',
       credentials: 'Award-winning creative director, Founded 3 successful startups, TEDx speaker',
-      demo: 'Samuel uses TruFlo to manage his creative agency\'s projects and his entrepreneurial ventures. The app\'s mood recognition helps him schedule brainstorming sessions when he\'s most inspired and administrative tasks when his energy is lower.'
     },
     {
-      name: 'Dr. William Hawkins',
-      position: 'Research Director',
-      company: 'Advanced Materials Institute',
+      name: 'William Hawkins',
+      position: 'Assistant Professor, Department of CS',
+      company: 'University of Cincinnati, CEAS',
       image: williamHawkins,
-      quote: 'The emotional intelligence built into TruFlo is remarkable. It\'s like having a productivity coach that truly understands human psychology.',
-      credentials: 'PhD in Materials Science, 100+ peer-reviewed publications, Industry innovation award winner',
-      demo: 'Dr. Hawkins implemented TruFlo across his research team, finding that the mood-aware task distribution improved team collaboration and individual performance. The app helped reduce burnout while maintaining high research standards.'
+      quote: 'TruFlo is approaching productivity in a way I haven’t seen before. The emotional intelligence built into its design sets it apart from anything else out there.',
+      credentials: ' PhD in Computer Science, focused on static binary rewriting for software security; multiple peer‑reviewed publications in software security and binary transformation techniquesPhD in Materials Science, 100+ peer-reviewed publications, Industry innovation award winner',
     }
   ];
 
@@ -171,8 +167,6 @@ export default function TruFloLandingPage() {
       others: 'Not Available',
       trufloColor: 'text-green-400',
       othersColor: 'text-red-400',
-      trufloIcon: '✅',
-      othersIcon: '❌'
     },
     {
       category: 'Engagement',
@@ -181,8 +175,6 @@ export default function TruFloLandingPage() {
       others: 'Limited Options',
       trufloColor: 'text-green-400',
       othersColor: 'text-yellow-400',
-      trufloIcon: '✅',
-      othersIcon: '⚠'
     },
     {
       category: 'Gamification',
@@ -191,8 +183,6 @@ export default function TruFloLandingPage() {
       others: 'Basic Points',
       trufloColor: 'text-green-400',
       othersColor: 'text-yellow-400',
-      trufloIcon: '✅',
-      othersIcon: '⚠'
     },
     {
       category: 'Pricing',
@@ -201,8 +191,6 @@ export default function TruFloLandingPage() {
       others: '$7–15/mo subscriptions',
       trufloColor: 'text-green-400',
       othersColor: 'text-yellow-400',
-      trufloIcon: '✅',
-      othersIcon: '⚠'
     },
     {
       category: 'Technology',
@@ -211,8 +199,6 @@ export default function TruFloLandingPage() {
       others: 'Basic Sync',
       trufloColor: 'text-green-400',
       othersColor: 'text-yellow-400',
-      trufloIcon: '✅',
-      othersIcon: '⚠'
     }
   ];
 
