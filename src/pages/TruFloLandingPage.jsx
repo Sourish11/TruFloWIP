@@ -618,15 +618,6 @@ export default function TruFloLandingPage() {
                             {testimonial.credentials}
                           </p>
                         </div>
-                        
-                        <div className="p-4 bg-white/5 rounded-lg border border-white/10">
-                          <h4 className="text-sm font-semibold text-white/90 mb-2 drop-shadow-sm font-ui">
-                            How They Use TruFlo
-                          </h4>
-                          <p className="text-white/70 text-sm drop-shadow-sm leading-relaxed font-body">
-                            {testimonial.demo}
-                          </p>
-                        </div>
                       </div>
                     </CardContent>
                   </Card>
