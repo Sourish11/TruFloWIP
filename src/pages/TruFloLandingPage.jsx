@@ -170,80 +170,89 @@ export default function TruFloLandingPage() {
 
   const testimonials = [
     {
-      name: 'Candace Wade',
-      position: 'Program Manager, Center for Entrepreneurship',
-      company: 'University of Cincinnati (1819 Innovation Hub / CEAS Venture Lab & Center for Entrepreneurship)',
+      name: "Candace Wade",
+      position: "Program Manager, Center for Entrepreneurship",
+      company:
+        "University of Cincinnati (1819 Innovation Hub / CEAS Venture Lab & Center for Entrepreneurship)",
       image: candaceWade,
-      quote: 'TruFlo’s mood-based gamification aligns with how real behavior change happens. It makes staying productive feel intuitive and genuinely rewarding.',
-      credentials: 'Manages and designs entrepreneurial programs, events, and student initiatives; supports STEM commercialization',
+      quote:
+        "TruFlo’s mood-based gamification aligns with how real behavior change happens. It makes staying productive feel intuitive and genuinely rewarding.",
+      credentials:
+        "Manages and designs entrepreneurial programs, events, and student initiatives; supports STEM commercialization",
     },
     {
-      name: 'Jason Heikenfeld',
-      position: 'Professor of Engineering',
-      company: 'University of Cincinnati',
+      name: "Jason Heikenfeld",
+      position: "Professor of Engineering",
+      company: "University of Cincinnati",
       image: jasonHeikenfeld,
-      quote: 'TruFlo’s emphasis on aligning work with emotional state is both novel and grounded in science. Its approach to time and energy management could be highly valuable in demanding professional environments.',
-      credentials: 'A Serial Entreprenur, Fellow of the National Academy of Inventors; over 50 patents and recognized leadership in wearable biosensors, flexible electronics, electrowetting and optoelectronics research',
+      quote:
+        "TruFlo’s emphasis on aligning work with emotional state is both novel and grounded in science. Its approach to time and energy management could be highly valuable in demanding professional environments.",
+      credentials:
+        "A Serial Entreprenur, Fellow of the National Academy of Inventors; over 50 patents and recognized leadership in wearable biosensors, flexible electronics, electrowetting and optoelectronics research",
     },
     {
-      name: 'Samuel Baker',
-      position: 'Program Director',
-      company: ' Flywheel Social Enterprise Hub',
+      name: "Samuel Baker",
+      position: "Program Director",
+      company: " Flywheel Social Enterprise Hub",
       image: samuelBaker,
-      quote: 'I’ve battled with distractions too, and TruFlo feels like the key. I’m genuinely excited to see it become real.',
-      credentials: 'Award-winning creative director, Founded 3 successful startups, TEDx speaker',
+      quote:
+        "I’ve battled with distractions too, and TruFlo feels like the key. I’m genuinely excited to see it become real.",
+      credentials:
+        "Award-winning creative director, Founded 3 successful startups, TEDx speaker",
     },
     {
-      name: 'William Hawkins',
-      position: 'Assistant Professor, Department of CS',
-      company: 'University of Cincinnati, CEAS',
+      name: "William Hawkins",
+      position: "Assistant Professor, Department of CS",
+      company: "University of Cincinnati, CEAS",
       image: williamHawkins,
-      quote: 'TruFlo is approaching productivity in a way I haven’t seen before. The emotional intelligence built into its design sets it apart from anything else out there.',
-      credentials: ' PhD in Computer Science, focused on static binary rewriting for software security; multiple peer‑reviewed publications in software security and binary transformation techniquesPhD in Materials Science, 100+ peer-reviewed publications, Industry innovation award winner',
-    }
+      quote:
+        "TruFlo is approaching productivity in a way I haven’t seen before. The emotional intelligence built into its design sets it apart from anything else out there.",
+      credentials:
+        " PhD in Computer Science, focused on static binary rewriting for software security; multiple peer‑reviewed publications in software security and binary transformation techniquesPhD in Materials Science, 100+ peer-reviewed publications, Industry innovation award winner",
+    },
   ];
 
   const comparisonData = [
     {
-      category: 'Core Technology',
-      feature: 'Mood-based task reshuffle',
-      truflo: 'Advanced AI Detection',
-      others: 'Not Available',
-      trufloColor: 'text-green-400',
-      othersColor: 'text-red-400',
+      category: "Core Technology",
+      feature: "Mood-based task reshuffle",
+      truflo: "Advanced AI Detection",
+      others: "Not Available",
+      trufloColor: "text-green-400",
+      othersColor: "text-red-400",
     },
     {
-      category: 'Engagement',
-      feature: 'Creator-led challenges',
-      truflo: 'Weekly Challenges',
-      others: 'Limited Options',
-      trufloColor: 'text-green-400',
-      othersColor: 'text-yellow-400',
+      category: "Engagement",
+      feature: "Creator-led challenges",
+      truflo: "Weekly Challenges",
+      others: "Limited Options",
+      trufloColor: "text-green-400",
+      othersColor: "text-yellow-400",
     },
     {
-      category: 'Gamification',
-      feature: 'Built-in community XP',
-      truflo: 'Comprehensive System',
-      others: 'Basic Points',
-      trufloColor: 'text-green-400',
-      othersColor: 'text-yellow-400',
+      category: "Gamification",
+      feature: "Built-in community XP",
+      truflo: "Comprehensive System",
+      others: "Basic Points",
+      trufloColor: "text-green-400",
+      othersColor: "text-yellow-400",
     },
     {
-      category: 'Pricing',
-      feature: 'Affordable access',
-      truflo: 'Freemium + $4.99 Pro',
-      others: '$7–15/mo subscriptions',
-      trufloColor: 'text-green-400',
-      othersColor: 'text-yellow-400',
+      category: "Pricing",
+      feature: "Affordable access",
+      truflo: "Freemium + $4.99 Pro",
+      others: "$7–15/mo subscriptions",
+      trufloColor: "text-green-400",
+      othersColor: "text-yellow-400",
     },
     {
-      category: 'Technology',
-      feature: 'Cross-device sync',
-      truflo: 'Real-time Sync',
-      others: 'Basic Sync',
-      trufloColor: 'text-green-400',
-      othersColor: 'text-yellow-400',
-    }
+      category: "Technology",
+      feature: "Cross-device sync",
+      truflo: "Real-time Sync",
+      others: "Basic Sync",
+      trufloColor: "text-green-400",
+      othersColor: "text-yellow-400",
+    },
   ];
   return (
     <div className="min-h-screen relative">
@@ -942,7 +951,6 @@ export default function TruFloLandingPage() {
                             <div
                               className={`inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-400/30 ${row.trufloColor}`}
                             >
-                              <span className="text-lg">{row.trufloIcon}</span>
                               <span className="font-semibold font-ui">
                                 {row.truflo}
                               </span>
@@ -954,7 +962,6 @@ export default function TruFloLandingPage() {
                             <div
                               className={`inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-white/5 border border-white/20 ${row.othersColor}`}
                             >
-                              <span className="text-lg">{row.othersIcon}</span>
                               <span className="font-semibold font-ui">
                                 {row.others}
                               </span>
