@@ -48,18 +48,30 @@
     sans-serif;
 
   /* Consistent Spacing System (8px base) */
-  --space-1: 0.5rem; /* 8px */
-  --space-2: 1rem; /* 16px */
-  --space-3: 1.5rem; /* 24px */
-  --space-4: 2rem; /* 32px */
-  --space-5: 2.5rem; /* 40px */
-  --space-6: 3rem; /* 48px */
-  --space-8: 4rem; /* 64px */
-  --space-10: 5rem; /* 80px */
-  --space-12: 6rem; /* 96px */
-  --space-16: 8rem; /* 128px */
-  --space-20: 10rem; /* 160px */
-  --space-24: 12rem; /* 192px */
+  --space-1: 0.5rem;
+  /* 8px */
+  --space-2: 1rem;
+  /* 16px */
+  --space-3: 1.5rem;
+  /* 24px */
+  --space-4: 2rem;
+  /* 32px */
+  --space-5: 2.5rem;
+  /* 40px */
+  --space-6: 3rem;
+  /* 48px */
+  --space-8: 4rem;
+  /* 64px */
+  --space-10: 5rem;
+  /* 80px */
+  --space-12: 6rem;
+  /* 96px */
+  --space-16: 8rem;
+  /* 128px */
+  --space-20: 10rem;
+  /* 160px */
+  --space-24: 12rem;
+  /* 192px */
 }
 
 /* Base Styles */
@@ -232,39 +244,46 @@ h6 {
 
 /* Responsive heading sizes */
 h1 {
-  font-size: 2.5rem; /* 40px */
+  font-size: 2.5rem;
+  /* 40px */
   font-weight: 800;
 }
 
 h2 {
-  font-size: 2rem; /* 32px */
+  font-size: 2rem;
+  /* 32px */
   font-weight: 700;
 }
 
 h3 {
-  font-size: 1.5rem; /* 24px */
+  font-size: 1.5rem;
+  /* 24px */
   font-weight: 600;
 }
 
 h4 {
-  font-size: 1.25rem; /* 20px */
+  font-size: 1.25rem;
+  /* 20px */
   font-weight: 600;
 }
 
 h5 {
-  font-size: 1.125rem; /* 18px */
+  font-size: 1.125rem;
+  /* 18px */
   font-weight: 500;
 }
 
 h6 {
-  font-size: 1rem; /* 16px */
+  font-size: 1rem;
+  /* 16px */
   font-weight: 500;
 }
 
 /* Hero heading - special case for landing page */
 .hero-heading {
   font-family: var(--font-heading);
-  font-size: 3.5rem; /* 56px */
+  font-size: 3.5rem;
+  /* 56px */
   font-weight: 800;
   letter-spacing: -0.025em;
 }
@@ -272,7 +291,8 @@ h6 {
 /* Page title heading */
 .page-title {
   font-family: var(--font-heading);
-  font-size: 2.25rem; /* 36px */
+  font-size: 2.25rem;
+  /* 36px */
   font-weight: 700;
   letter-spacing: -0.025em;
 }
@@ -280,7 +300,8 @@ h6 {
 /* Section heading */
 .section-heading {
   font-family: var(--font-heading);
-  font-size: 1.875rem; /* 30px */
+  font-size: 1.875rem;
+  /* 30px */
   font-weight: 600;
   letter-spacing: -0.025em;
 }
@@ -299,19 +320,22 @@ p {
 /* Text size utilities with Inter/Poppins/DM Sans font */
 .text-lg {
   font-family: var(--font-body);
-  font-size: 1.125rem; /* 18px */
+  font-size: 1.125rem;
+  /* 18px */
   line-height: 1.7;
 }
 
 .text-xl {
   font-family: var(--font-body);
-  font-size: 1.25rem; /* 20px */
+  font-size: 1.25rem;
+  /* 20px */
   line-height: 1.7;
 }
 
 .text-2xl {
   font-family: var(--font-body);
-  font-size: 1.5rem; /* 24px */
+  font-size: 1.5rem;
+  /* 24px */
   line-height: 1.3;
 }
 
@@ -710,6 +734,7 @@ a:hover {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -769,6 +794,7 @@ a:hover {
     transform: scale(0.8);
     opacity: 1;
   }
+
   100% {
     transform: scale(1.4);
     opacity: 0;
@@ -1053,6 +1079,7 @@ a:hover {
     transform: scale(1);
     opacity: 0.3;
   }
+
   50% {
     transform: scale(1.05);
     opacity: 0.6;
@@ -1065,6 +1092,7 @@ a:hover {
     transform: scale(1);
     opacity: 0.6;
   }
+
   50% {
     transform: scale(1.2);
     opacity: 0.3;
@@ -1077,6 +1105,7 @@ a:hover {
     opacity: 0.3;
     filter: blur(8px);
   }
+
   50% {
     opacity: 0.7;
     filter: blur(12px);
@@ -1542,6 +1571,7 @@ a:hover {
     transform: translateX(-20px);
     opacity: 0;
   }
+
   50% {
     transform: translateX(20px);
     opacity: 1;
@@ -1554,6 +1584,7 @@ a:hover {
     transform: scale(1);
     opacity: 0.6;
   }
+
   50% {
     transform: scale(1.1);
     opacity: 0.8;
@@ -1617,6 +1648,7 @@ a:hover {
     transform: scale(1);
     filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.3));
   }
+
   50% {
     transform: scale(1.1);
     filter: drop-shadow(0 0 16px rgba(139, 92, 246, 0.6));
@@ -1632,6 +1664,7 @@ a:hover {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1643,6 +1676,7 @@ a:hover {
     opacity: 0;
     transform: translateY(40px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1654,9 +1688,11 @@ a:hover {
   100% {
     transform: translateY(0px) rotate(0deg);
   }
+
   33% {
     transform: translateY(-20px) rotate(1deg);
   }
+
   66% {
     transform: translateY(-10px) rotate(-1deg);
   }
@@ -1676,6 +1712,7 @@ a:hover {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -1689,18 +1726,24 @@ a:hover {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 html {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 body {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 * {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 *::-webkit-scrollbar {
@@ -1751,27 +1794,33 @@ body {
 
   /* Mobile heading sizes */
   h1 {
-    font-size: 2rem; /* 32px */
+    font-size: 2rem;
+    /* 32px */
   }
 
   h2 {
-    font-size: 1.75rem; /* 28px */
+    font-size: 1.75rem;
+    /* 28px */
   }
 
   h3 {
-    font-size: 1.375rem; /* 22px */
+    font-size: 1.375rem;
+    /* 22px */
   }
 
   .hero-heading {
-    font-size: 2.5rem; /* 40px */
+    font-size: 2.5rem;
+    /* 40px */
   }
 
   .page-title {
-    font-size: 1.875rem; /* 30px */
+    font-size: 1.875rem;
+    /* 30px */
   }
 
   .section-heading {
-    font-size: 1.5rem; /* 24px */
+    font-size: 1.5rem;
+    /* 24px */
   }
 
   /* Adjust background for mobile */
@@ -1791,11 +1840,13 @@ body {
 /* Tablet responsive adjustments */
 @media (max-width: 1024px) and (min-width: 769px) {
   .hero-heading {
-    font-size: 3rem; /* 48px */
+    font-size: 3rem;
+    /* 48px */
   }
 
   .page-title {
-    font-size: 2rem; /* 32px */
+    font-size: 2rem;
+    /* 32px */
   }
 }
 
@@ -1918,12 +1969,15 @@ h6 {
 .grid-1 {
   grid-template-columns: 1fr;
 }
+
 .grid-2 {
   grid-template-columns: repeat(2, 1fr);
 }
+
 .grid-3 {
   grid-template-columns: repeat(3, 1fr);
 }
+
 .grid-4 {
   grid-template-columns: repeat(4, 1fr);
 }
@@ -1932,6 +1986,7 @@ h6 {
   .grid-4 {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .grid-3 {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1974,6 +2029,7 @@ h6 {
   .content-grid-4 {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .content-grid-3 {
     grid-template-columns: repeat(2, 1fr);
   }
