@@ -1,21 +1,22 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button } from '../components/ui/Button';
-import { Card, CardContent } from '../components/ui/Card';
-import { Input } from '../components/ui/Input';
-import { Modal, ModalHeader, ModalContent } from '../components/ui/Modal';
-import { joinEarlyAccess } from '../hooks/joinEarlyAccess';
-import MoodMap from '../components/ui/MoodMap';
-import LivePoll from '../components/ui/LivePoll';
-import BrainDrop from '../components/ui/BrainDrop';
-import landingVideo from '../assets/landing-video.mp4';
-import candaceWade from '../assets/testimonials/candace-wade.png';
-import jasonHeikenfeld from '../assets/testimonials/jason-heikenfeld.png';
-import samuelBaker from '../assets/testimonials/samuel-baker.png';
-import williamHawkins from '../assets/testimonials/william-hawkins.png';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "../components/ui/Button";
+import { Card, CardContent } from "../components/ui/Card";
+import { Input } from "../components/ui/Input";
+import { Modal, ModalHeader, ModalContent } from "../components/ui/Modal";
+import { joinEarlyAccess } from "../hooks/joinEarlyAccess";
+import MoodMap from "../components/ui/MoodMap";
+import LivePoll from "../components/ui/LivePoll";
+import BrainDrop from "../components/ui/BrainDrop";
+import DiscoverButton from "../components/ui/DiscoverButton";
+import landingVideo from "../assets/landing-video.mp4";
+import candaceWade from "../assets/testimonials/candace-wade.png";
+import jasonHeikenfeld from "../assets/testimonials/jason-heikenfeld.png";
+import samuelBaker from "../assets/testimonials/samuel-baker.png";
+import williamHawkins from "../assets/testimonials/william-hawkins.png";
 
 export default function TruFloLandingPage() {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [showWaitlistModal, setShowWaitlistModal] = useState(false);
@@ -29,9 +30,9 @@ export default function TruFloLandingPage() {
     try {
       await notify(email);
       setSubmitted(true);
-      setEmail('');
+      setEmail("");
     } catch (error) {
-      console.error('Error submitting email:', error);
+      console.error("Error submitting email:", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -40,176 +41,233 @@ export default function TruFloLandingPage() {
   const handleCloseModal = () => {
     setShowWaitlistModal(false);
     setSubmitted(false);
-    setEmail('');
+    setEmail("");
   };
 
   const handleTryForFree = () => {
-    navigate('/login');
+    navigate("/login");
   };
 
   const handleRevealContent = () => {
     setContentRevealed(true);
     // Smooth scroll to the revealed content
     setTimeout(() => {
-      const revealedSection = document.getElementById('revealed-content');
+      const revealedSection = document.getElementById("revealed-content");
       if (revealedSection) {
-        revealedSection.scrollIntoView({ behavior: 'smooth' });
+        revealedSection.scrollIntoView({ behavior: "smooth" });
       }
     }, 100);
   };
 
   const workflowSteps = [
     {
-      step: '01',
-      title: 'Mood Detection',
-      subtitle: 'AI-Powered Emotional Intelligence',
-      description: 'Advanced algorithms analyze your emotional state through voice patterns, behavioral cues, and self-reported mood indicators to understand your current mental state.',
-      features: ['Voice emotion analysis', 'Behavioral pattern recognition', 'Self-assessment integration', 'Real-time mood tracking'],
-      icon: '🧠',
-      color: 'from-blue-500 to-cyan-500',
-      bgColor: 'from-blue-500/10 to-cyan-500/10',
-      borderColor: 'border-blue-400/30'
+      step: "01",
+      title: "Mood Detection",
+      subtitle: "AI-Powered Emotional Intelligence",
+      description:
+        "Advanced algorithms analyze your emotional state through voice patterns, behavioral cues, and self-reported mood indicators to understand your current mental state.",
+      features: [
+        "Voice emotion analysis",
+        "Behavioral pattern recognition",
+        "Self-assessment integration",
+        "Real-time mood tracking",
+      ],
+      icon: "🧠",
+      color: "from-blue-500 to-cyan-500",
+      bgColor: "from-blue-500/10 to-cyan-500/10",
+      borderColor: "border-blue-400/30",
+      image:
+        "https://cdn.builder.io/api/v1/image/assets%2Fbf75373d79e74250a299246f9eb8fd59%2F7014556a910a4df190cd775eb71f00ac?format=webp&width=800",
     },
     {
-      step: '02',
-      title: 'Smart Adaptation',
-      subtitle: 'Dynamic Task Reshuffling',
-      description: 'Tasks are intelligently reorganized based on your current energy levels, focus capacity, and emotional readiness for optimal productivity.',
-      features: ['Intelligent task prioritization', 'Energy-based scheduling', 'Focus capacity assessment', 'Adaptive workflow management'],
-      icon: '⚡',
-      color: 'from-purple-500 to-pink-500',
-      bgColor: 'from-purple-500/10 to-pink-500/10',
-      borderColor: 'border-purple-400/30'
+      step: "02",
+      title: "Smart Adaptation",
+      subtitle: "Dynamic Task Reshuffling",
+      description:
+        "Tasks are intelligently reorganized based on your current energy levels, focus capacity, and emotional readiness for optimal productivity.",
+      features: [
+        "Intelligent task prioritization",
+        "Energy-based scheduling",
+        "Focus capacity assessment",
+        "Adaptive workflow management",
+      ],
+      icon: "⚡",
+      color: "from-purple-500 to-pink-500",
+      bgColor: "from-purple-500/10 to-pink-500/10",
+      borderColor: "border-purple-400/30",
+      image:
+        "https://cdn.builder.io/api/v1/image/assets%2Fbf75373d79e74250a299246f9eb8fd59%2F5ae257ebc40a4671b22c898bdb7730d6?format=webp&width=800",
     },
     {
-      step: '03',
-      title: 'Gamification',
-      subtitle: 'Reward-Based Motivation',
-      description: 'Earn XP, unlock achievements, and compete with friends through a comprehensive gamification system that makes productivity engaging.',
-      features: ['XP and achievement system', 'Social leaderboards', 'Challenge participation', 'Progress celebrations'],
-      icon: '🏆',
-      color: 'from-yellow-500 to-orange-500',
-      bgColor: 'from-yellow-500/10 to-orange-500/10',
-      borderColor: 'border-yellow-400/30'
+      step: "03",
+      title: "Gamification",
+      subtitle: "Reward-Based Motivation",
+      description:
+        "Earn XP, unlock achievements, and compete with friends through a comprehensive gamification system that makes productivity engaging.",
+      features: [
+        "XP and achievement system",
+        "Social leaderboards",
+        "Challenge participation",
+        "Progress celebrations",
+      ],
+      icon: "🏆",
+      color: "from-yellow-500 to-orange-500",
+      bgColor: "from-yellow-500/10 to-orange-500/10",
+      borderColor: "border-yellow-400/30",
+      image:
+        "https://cdn.builder.io/api/v1/image/assets%2Fbf75373d79e74250a299246f9eb8fd59%2Fec741848c89041d285f26f4859b22c2e?format=webp&width=800",
     },
     {
-      step: '04',
-      title: 'Community',
-      subtitle: 'Social Accountability',
-      description: 'Connect with like-minded individuals, join challenges, and build accountability partnerships that keep you motivated and engaged.',
-      features: ['Accountability partnerships', 'Group challenges', 'Community support', 'Shared goal tracking'],
-      icon: '👥',
-      color: 'from-green-500 to-teal-500',
-      bgColor: 'from-green-500/10 to-teal-500/10',
-      borderColor: 'border-green-400/30'
+      step: "04",
+      title: "Community",
+      subtitle: "Social Accountability",
+      description:
+        "Connect with like-minded individuals, join challenges, and build accountability partnerships that keep you motivated and engaged.",
+      features: [
+        "Accountability partnerships",
+        "Group challenges",
+        "Community support",
+        "Shared goal tracking",
+      ],
+      icon: "👥",
+      color: "from-green-500 to-teal-500",
+      bgColor: "from-green-500/10 to-teal-500/10",
+      borderColor: "border-green-400/30",
+      image:
+        "https://cdn.builder.io/api/v1/image/assets%2Fbf75373d79e74250a299246f9eb8fd59%2Ff4acc6c0ece54665a7e1a7f535cba668?format=webp&width=800",
     },
     {
-      step: '05',
-      title: 'Analytics',
-      subtitle: 'Intelligent Insights',
-      description: 'Comprehensive analytics reveal patterns between your mood, productivity, and optimal working conditions for continuous improvement.',
-      features: ['Mood-productivity correlations', 'Performance analytics', 'Optimization suggestions', 'Progress tracking'],
-      icon: '📊',
-      color: 'from-indigo-500 to-purple-500',
-      bgColor: 'from-indigo-500/10 to-purple-500/10',
-      borderColor: 'border-indigo-400/30'
-    }
+      step: "05",
+      title: "Analytics",
+      subtitle: "Intelligent Insights",
+      description:
+        "Comprehensive analytics reveal patterns between your mood, productivity, and optimal working conditions for continuous improvement.",
+      features: [
+        "Mood-productivity correlations",
+        "Performance analytics",
+        "Optimization suggestions",
+        "Progress tracking",
+      ],
+      icon: "📊",
+      color: "from-indigo-500 to-purple-500",
+      bgColor: "from-indigo-500/10 to-purple-500/10",
+      borderColor: "border-indigo-400/30",
+      image:
+        "https://cdn.builder.io/api/v1/image/assets%2Fbf75373d79e74250a299246f9eb8fd59%2Fd5f9149471a64433b57f0bce2f8b26bd?format=webp&width=800",
+    },
   ];
 
   const stats = [
-    { number: '94%', label: 'Feel stuck in distractions' },
-    { number: '74%', label: 'Say existing solutions don\'t help' },
-    { number: '84%', label: 'Would try TruFlo' },
-    { number: '67%', label: 'Report improved focus with mood-based scheduling' },
-    { number: '89%', label: 'Complete more tasks when emotionally aligned' }
+    { number: "94%", label: "Feel stuck in distractions" },
+    { number: "74%", label: "Say existing solutions don't help" },
+    { number: "84%", label: "Would try TruFlo" },
+    {
+      number: "67%",
+      label: "Report improved focus with mood-based scheduling",
+    },
+    { number: "89%", label: "Complete more tasks when emotionally aligned" },
   ];
 
   const testimonials = [
     {
-      name: 'Candace Wade',
-      position: 'Program Manager, Center for Entrepreneurship',
-      company: 'University of Cincinnati (1819 Innovation Hub / CEAS Venture Lab & Center for Entrepreneurship)',
+      name: "Candace Wade",
+      position: "Program Manager, Center for Entrepreneurship",
+      company:
+        "University of Cincinnati (1819 Innovation Hub / CEAS Venture Lab & Center for Entrepreneurship)",
       image: candaceWade,
-      quote: 'TruFlo’s mood-based gamification aligns with how real behavior change happens. It makes staying productive feel intuitive and genuinely rewarding.',
-      credentials: 'Manages and designs entrepreneurial programs, events, and student initiatives; supports STEM commercialization',
+      quote:
+        "TruFlo’s mood-based gamification aligns with how real behavior change happens. It makes staying productive feel intuitive and genuinely rewarding.",
+      credentials:
+        "Manages and designs entrepreneurial programs, events, and student initiatives; supports STEM commercialization",
     },
     {
-      name: 'Jason Heikenfeld',
-      position: 'Professor of Engineering',
-      company: 'University of Cincinnati',
+      name: "Jason Heikenfeld",
+      position: "Professor of Engineering",
+      company: "University of Cincinnati",
       image: jasonHeikenfeld,
-      quote: 'TruFlo’s emphasis on aligning work with emotional state is both novel and grounded in science. Its approach to time and energy management could be highly valuable in demanding professional environments.',
-      credentials: 'A Serial Entreprenur, Fellow of the National Academy of Inventors; over 50 patents and recognized leadership in wearable biosensors, flexible electronics, electrowetting and optoelectronics research',
+      quote:
+        "TruFlo’s emphasis on aligning work with emotional state is both novel and grounded in science. Its approach to time and energy management could be highly valuable in demanding professional environments.",
+      credentials:
+        "A Serial Entreprenur, Fellow of the National Academy of Inventors; over 50 patents and recognized leadership in wearable biosensors, flexible electronics, electrowetting and optoelectronics research",
     },
     {
-      name: 'Samuel Baker',
-      position: 'Program Director',
-      company: ' Flywheel Social Enterprise Hub',
+      name: "Samuel Baker",
+      position: "Program Director",
+      company: " Flywheel Social Enterprise Hub",
       image: samuelBaker,
-      quote: 'I’ve battled with distractions too, and TruFlo feels like the key. I’m genuinely excited to see it become real.',
-      credentials: 'Award-winning creative director, Founded 3 successful startups, TEDx speaker',
+      quote:
+        "I’ve battled with distractions too, and TruFlo feels like the key. I’m genuinely excited to see it become real.",
+      credentials:
+        "Award-winning creative director, Founded 3 successful startups, TEDx speaker",
     },
     {
-      name: 'William Hawkins',
-      position: 'Assistant Professor, Department of CS',
-      company: 'University of Cincinnati, CEAS',
+      name: "William Hawkins",
+      position: "Assistant Professor, Department of CS",
+      company: "University of Cincinnati, CEAS",
       image: williamHawkins,
-      quote: 'TruFlo is approaching productivity in a way I haven’t seen before. The emotional intelligence built into its design sets it apart from anything else out there.',
-      credentials: ' PhD in Computer Science, focused on static binary rewriting for software security; multiple peer‑reviewed publications in software security and binary transformation techniquesPhD in Materials Science, 100+ peer-reviewed publications, Industry innovation award winner',
-    }
+      quote:
+        "TruFlo is approaching productivity in a way I haven’t seen before. The emotional intelligence built into its design sets it apart from anything else out there.",
+      credentials:
+        " PhD in Computer Science, focused on static binary rewriting for software security; multiple peer‑reviewed publications in software security and binary transformation techniquesPhD in Materials Science, 100+ peer-reviewed publications, Industry innovation award winner",
+    },
   ];
 
   const comparisonData = [
     {
-      category: 'Core Technology',
-      feature: 'Mood-based task reshuffle',
-      truflo: 'Advanced AI Detection',
-      others: 'Not Available',
-      trufloColor: 'text-green-400',
-      othersColor: 'text-red-400',
+      category: "Core Technology",
+      feature: "Mood-based task reshuffle",
+      truflo: "Advanced AI Detection",
+      others: "Not Available",
+      trufloColor: "text-green-400",
+      othersColor: "text-red-400",
     },
     {
-      category: 'Engagement',
-      feature: 'Creator-led challenges',
-      truflo: 'Weekly Challenges',
-      others: 'Limited Options',
-      trufloColor: 'text-green-400',
-      othersColor: 'text-yellow-400',
+      category: "Engagement",
+      feature: "Creator-led challenges",
+      truflo: "Weekly Challenges",
+      others: "Limited Options",
+      trufloColor: "text-green-400",
+      othersColor: "text-yellow-400",
     },
     {
-      category: 'Gamification',
-      feature: 'Built-in community XP',
-      truflo: 'Comprehensive System',
-      others: 'Basic Points',
-      trufloColor: 'text-green-400',
-      othersColor: 'text-yellow-400',
+      category: "Gamification",
+      feature: "Built-in community XP",
+      truflo: "Comprehensive System",
+      others: "Basic Points",
+      trufloColor: "text-green-400",
+      othersColor: "text-yellow-400",
     },
     {
-      category: 'Pricing',
-      feature: 'Affordable access',
-      truflo: 'Freemium + $4.99 Pro',
-      others: '$7–15/mo subscriptions',
-      trufloColor: 'text-green-400',
-      othersColor: 'text-yellow-400',
+      category: "Pricing",
+      feature: "Affordable access",
+      truflo: "Freemium + $4.99 Pro",
+      others: "$7–15/mo subscriptions",
+      trufloColor: "text-green-400",
+      othersColor: "text-yellow-400",
     },
     {
-      category: 'Technology',
-      feature: 'Cross-device sync',
-      truflo: 'Real-time Sync',
-      others: 'Basic Sync',
-      trufloColor: 'text-green-400',
-      othersColor: 'text-yellow-400',
-    }
+      category: "Technology",
+      feature: "Cross-device sync",
+      truflo: "Real-time Sync",
+      others: "Basic Sync",
+      trufloColor: "text-green-400",
+      othersColor: "text-yellow-400",
+    },
   ];
-
   return (
     <div className="min-h-screen relative">
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-24 pb-16">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute top-40 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
+          <div
+            className="absolute top-40 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-float"
+            style={{ animationDelay: "2s" }}
+          ></div>
+          <div
+            className="absolute bottom-20 left-1/3 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl animate-float"
+            style={{ animationDelay: "4s" }}
+          ></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -224,27 +282,38 @@ export default function TruFloLandingPage() {
               </div>
 
               <div className="relative py-12">
-                <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-8 animate-fade-in drop-shadow-2xl font-heading leading-tight">
-                  Unlock Your{' '}
+                <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white mb-8 animate-fade-in drop-shadow-2xl font-heading leading-tight">
+                  Unlock Your{" "}
                   <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
                     Tru
-                  </span>{' '}
+                  </span>{" "}
                   Potential
                 </h1>
-                
+
                 <div className="mb-12 animate-slide-up">
-                  <p className="text-xl md:text-2xl lg:text-3xl font-bold leading-relaxed drop-shadow-lg font-heading max-w-5xl mx-auto">
+                  <p className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-relaxed drop-shadow-lg font-heading max-w-5xl mx-auto">
                     <span className="bg-gradient-to-r from-purple-300 via-pink-300 to-blue-300 bg-clip-text text-transparent">
-                      TruFlo is the first productivity platform that understands your emotional state and reshapes your day around it
+                      TruFlo is the first productivity platform that understands
+                      your emotional state and reshapes your day around it
                     </span>
-                    <span className="text-white"> — helping you take that first step, stay in flow, and finally finish what matters.</span>
+                    <span className="text-white">
+                      {" "}
+                      — helping you take that first step, stay in flow, and
+                      finally finish what matters.
+                    </span>
                   </p>
                 </div>
-                
+
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 animate-slide-up">
                   <Button
                     size="md"
-                    onClick={() => window.open('https://discord.gg/eZHfGJTRNh', '_blank', 'noopener,noreferrer')}
+                    onClick={() =>
+                      window.open(
+                        "https://discord.gg/eZHfGJTRNh",
+                        "_blank",
+                        "noopener,noreferrer",
+                      )
+                    }
                     className="text-base px-6 py-3 shadow-2xl transform hover:scale-105 transition-all duration-300"
                   >
                     Join Discord
@@ -268,88 +337,19 @@ export default function TruFloLandingPage() {
       {!contentRevealed && (
         <div className="relative">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black/90 backdrop-blur-sm z-20 pointer-events-none" />
-          
+
           <div className="relative z-30 flex justify-center py-20">
-            <div className="max-w-2xl mx-auto px-4">
-              <button
-                onClick={handleRevealContent}
-                className="group discover-power-section w-full"
-              >
-                <div className="discover-icon-container">
-                  <div className="discover-pulse-ring"></div>
-                  <div className="text-6xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                    ⚡
-                  </div>
-                </div>
-                
-                <div className="text-center space-y-6">
-                  <h2 className="text-3xl md:text-4xl font-bold text-white font-heading">
-                    Discover TruFlo's Power
-                  </h2>
-                  
-                  <p className="text-lg md:text-xl text-white/80 font-body leading-relaxed max-w-lg mx-auto">
-                    Experience the revolutionary technology that's transforming how people approach productivity and personal growth.
-                  </p>
-                  
-                  <div className="flex items-center justify-center space-x-4 pt-4">
-                    <div className="h-px bg-gradient-to-r from-transparent via-purple-400/60 to-transparent flex-1 max-w-20"></div>
-                    <div className="discover-arrow">
-                      <svg 
-                        className="w-8 h-8 text-white/90 group-hover:text-white transition-all duration-300" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
-                      >
-                        <path 
-                          strokeLinecap="round" 
-                          strokeLinejoin="round" 
-                          strokeWidth={3} 
-                          d="M19 14l-7 7m0 0l-7-7m7 7V3" 
-                        />
-                      </svg>
-                    </div>
-                    <div className="h-px bg-gradient-to-r from-transparent via-purple-400/60 to-transparent flex-1 max-w-20"></div>
-                  </div>
-                  
-                  <div className="text-sm text-white/60 font-ui">
-                    Click to explore the future of productivity
-                  </div>
-                </div>
-              </button>
+            <div className="max-w-6xl mx-auto px-4">
+              <div className="flex flex-col items-center gap-8">
+                <DiscoverButton onRevealContent={handleRevealContent} />
 
-              {/* Join Waitlist Section - No Border Box */}
-              <div className="join-waitlist-section">
-                <form onSubmit={handleEmailSubmit} className="join-waitlist-form">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="join-waitlist-input font-body"
-                    required
-                  />
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="join-waitlist-button font-ui"
-                  >
-                    {isSubmitting ? 'Joining...' : 'Join Waitlist'}
-                  </button>
-                </form>
-
-                {submitted && (
-                  <div className="mt-4 p-3 bg-green-500/20 border border-green-400/30 rounded-lg text-center">
-                    <p className="text-green-300 font-medium font-body text-sm">
-                      🎉 You're on the list! We'll notify you as soon as TruFlo is available.
-                    </p>
-                  </div>
-                )}
-
-                <div className="mt-3 text-center">
-                  <p className="text-white/60 text-xs font-body">
-                    Join 10,000+ people already on the waitlist. No spam, just updates.
-                  </p>
-                </div>
+                <Button
+                  size="md"
+                  onClick={() => setShowWaitlistModal(true)}
+                  className="text-base px-6 py-3 shadow-2xl transform hover:scale-105 transition-all duration-300 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 border-emerald-500/50"
+                >
+                  Join Waitlist
+                </Button>
               </div>
             </div>
           </div>
@@ -378,14 +378,18 @@ export default function TruFloLandingPage() {
                   <div className="space-y-10 text-white relative z-10">
                     <div className="space-y-8">
                       <p className="text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed drop-shadow-lg font-body">
-                        Do you ever get that feeling—where you <em className="italic font-bold text-purple-300">want</em> to do something meaningful, productive, or even simple…
+                        Do you ever get that feeling—where you{" "}
+                        <em className="italic font-bold text-purple-300">
+                          want
+                        </em>{" "}
+                        to do something meaningful, productive, or even simple…
                       </p>
-                      
+
                       <p className="text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed drop-shadow-lg font-body">
                         but somehow, you just can't begin?
                       </p>
                     </div>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-xl md:text-2xl font-light leading-relaxed text-white/90">
                       <div className="glass-card p-6 rounded-xl">
                         <div className="text-4xl mb-4">😴</div>
@@ -397,26 +401,37 @@ export default function TruFloLandingPage() {
                       </div>
                       <div className="glass-card p-6 rounded-xl">
                         <div className="text-4xl mb-4">⏰</div>
-                        <p className="font-body">Maybe you're telling yourself, "I'll start in five minutes," and suddenly an hour's gone.</p>
+                        <p className="font-body">
+                          Maybe you're telling yourself, "I'll start in five
+                          minutes," and suddenly an hour's gone.
+                        </p>
                       </div>
                     </div>
-                    
+
                     <div className="space-y-6 text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed">
                       <p className="font-body">It's not laziness.</p>
                       <p className="font-body">It's not a lack of ambition.</p>
-                      <p className="font-body">It's the <em className="italic font-bold text-purple-300">disconnect</em> between how you feel and what you want to do.</p>
+                      <p className="font-body">
+                        It's the{" "}
+                        <em className="italic font-bold text-purple-300">
+                          disconnect
+                        </em>{" "}
+                        between how you feel and what you want to do.
+                      </p>
                     </div>
-                    
+
                     <div className="flex items-center justify-center space-x-4 py-12">
                       <div className="h-px bg-gradient-to-r from-transparent via-purple-400/60 to-transparent flex-1" />
                       <div className="relative">
                         <div className="w-20 h-20 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-full flex items-center justify-center border-2 border-white/20 backdrop-blur-sm">
-                          <span className="text-4xl animate-brain-pulse">🧠</span>
+                          <span className="text-4xl animate-brain-pulse">
+                            🧠
+                          </span>
                         </div>
                       </div>
                       <div className="h-px bg-gradient-to-r from-transparent via-purple-400/60 to-transparent flex-1" />
                     </div>
-                    
+
                     <p className="text-xl md:text-2xl lg:text-3xl font-light leading-relaxed text-purple-200 drop-shadow-lg font-body">
                       That's exactly what TruFlo is here to solve.
                     </p>
@@ -438,7 +453,19 @@ export default function TruFloLandingPage() {
                     What is TruFlo?
                   </h2>
                   <p className="text-xl md:text-2xl text-white/90 leading-relaxed drop-shadow-lg max-w-5xl mx-auto font-body">
-                    TruFlo is a <span className="font-bold text-purple-300">next-gen productivity platform</span> that blends emotion AI, gamified XP, and creator-led challenges to keep 16- to 35-year-olds locked into deep work—without resorting to will-power alone. Where traditional apps nag, <span className="font-bold text-blue-300">TruFlo adapts</span>: detecting how you feel and serving the task you're most likely to crush right now!
+                    TruFlo is a{" "}
+                    <span className="font-bold text-purple-300">
+                      next-gen productivity platform
+                    </span>{" "}
+                    that blends emotion AI, gamified XP, and creator-led
+                    challenges to keep 16- to 35-year-olds locked into deep
+                    work—without resorting to will-power alone. Where
+                    traditional apps nag,{" "}
+                    <span className="font-bold text-blue-300">
+                      TruFlo adapts
+                    </span>
+                    : detecting how you feel and serving the task you're most
+                    likely to crush right now!
                   </p>
                 </div>
               </div>
@@ -455,7 +482,9 @@ export default function TruFloLandingPage() {
                       How TruFlo Works
                     </h2>
                     <p className="text-xl text-white/90 drop-shadow-lg max-w-4xl mx-auto font-body">
-                      Experience the revolutionary 5-step process that transforms your productivity through intelligent mood recognition and adaptive task management.
+                      Experience the revolutionary 5-step process that
+                      transforms your productivity through intelligent mood
+                      recognition and adaptive task management.
                     </p>
                   </div>
                 </div>
@@ -463,11 +492,18 @@ export default function TruFloLandingPage() {
 
               <div className="max-w-7xl mx-auto space-y-16">
                 {workflowSteps.map((step, index) => (
-                  <div key={index} className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
+                  <div
+                    key={index}
+                    className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? "lg:grid-flow-col-dense" : ""}`}
+                  >
                     {/* Content Side */}
-                    <div className={`space-y-8 ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
+                    <div
+                      className={`space-y-8 ${index % 2 === 1 ? "lg:col-start-2" : ""}`}
+                    >
                       <div className="flex items-center space-x-4">
-                        <div className={`w-16 h-16 bg-gradient-to-r ${step.color} rounded-2xl flex items-center justify-center shadow-xl border-2 border-white/20`}>
+                        <div
+                          className={`w-16 h-16 bg-gradient-to-r ${step.color} rounded-2xl flex items-center justify-center shadow-xl border-2 border-white/20`}
+                        >
                           <span className="text-3xl">{step.icon}</span>
                         </div>
                         <div className="flex-1">
@@ -489,9 +525,16 @@ export default function TruFloLandingPage() {
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {step.features.map((feature, featureIndex) => (
-                          <div key={featureIndex} className="flex items-center space-x-3 p-3 glass-card rounded-lg">
-                            <div className={`w-2 h-2 bg-gradient-to-r ${step.color} rounded-full`}></div>
-                            <span className="text-white/90 text-sm font-medium font-body">{feature}</span>
+                          <div
+                            key={featureIndex}
+                            className="flex items-center space-x-3 p-3 glass-card rounded-lg"
+                          >
+                            <div
+                              className={`w-2 h-2 bg-gradient-to-r ${step.color} rounded-full`}
+                            ></div>
+                            <span className="text-white/90 text-sm font-medium font-body">
+                              {feature}
+                            </span>
                           </div>
                         ))}
                       </div>
@@ -503,9 +546,9 @@ export default function TruFloLandingPage() {
                             <div
                               key={i}
                               className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                                i <= index 
-                                  ? `bg-gradient-to-r ${step.color}` 
-                                  : 'bg-white/20'
+                                i <= index
+                                  ? `bg-gradient-to-r ${step.color}`
+                                  : "bg-white/20"
                               }`}
                             />
                           ))}
@@ -517,27 +560,32 @@ export default function TruFloLandingPage() {
                     </div>
 
                     {/* Visual Side */}
-                    <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
-                      <div className={`relative p-8 glass-enhanced rounded-3xl border-2 ${step.borderColor} bg-gradient-to-br ${step.bgColor} shadow-2xl`}>
+                    <div
+                      className={`${index % 2 === 1 ? "lg:col-start-1" : ""}`}
+                    >
+                      <div
+                        className={`relative glass-enhanced rounded-3xl border-2 ${step.borderColor} bg-gradient-to-br ${step.bgColor} shadow-2xl overflow-hidden`}
+                      >
                         <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-3xl"></div>
-                        
-                        {/* Large icon display */}
-                        <div className="relative z-10 text-center">
-                          <div className={`w-32 h-32 mx-auto bg-gradient-to-r ${step.color} rounded-full flex items-center justify-center shadow-2xl border-4 border-white/20 mb-6`}>
-                            <span className="text-6xl">{step.icon}</span>
+
+                        {/* Step Image */}
+                        <div className="relative z-10">
+                          <div className="aspect-video w-full">
+                            <img
+                              src={step.image}
+                              alt={`${step.title} - ${step.subtitle}`}
+                              className="w-full h-full object-cover rounded-2xl"
+                            />
                           </div>
-                          
-                          {/* Animated elements */}
-                          <div className="space-y-4">
-                            <div className={`h-2 bg-gradient-to-r ${step.color} rounded-full opacity-60`}></div>
-                            <div className={`h-2 bg-gradient-to-r ${step.color} rounded-full opacity-40 w-3/4 mx-auto`}></div>
-                            <div className={`h-2 bg-gradient-to-r ${step.color} rounded-full opacity-20 w-1/2 mx-auto`}></div>
-                          </div>
-                          
+
                           {/* Step number overlay */}
-                          <div className="absolute -top-4 -right-4">
-                            <div className={`w-12 h-12 bg-gradient-to-r ${step.color} rounded-full flex items-center justify-center shadow-xl border-2 border-white/30`}>
-                              <span className="text-white font-bold text-lg font-ui">{step.step}</span>
+                          <div className="absolute -top-2 -right-2">
+                            <div
+                              className={`w-12 h-12 bg-gradient-to-r ${step.color} rounded-full flex items-center justify-center shadow-xl border-2 border-white/30`}
+                            >
+                              <span className="text-white font-bold text-lg font-ui">
+                                {step.step}
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -551,9 +599,13 @@ export default function TruFloLandingPage() {
                 <div className="relative">
                   <div className="relative z-10 py-8">
                     <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-relaxed drop-shadow-2xl font-heading">
-                      From initial mood detection to continuous learning, TruFlo creates a{' '}
-                      <span className="bg-gradient-to-r from-purple-300 via-pink-300 to-blue-300 bg-clip-text text-transparent">personalized productivity ecosystem</span>{' '}
-                      that evolves with you, maximizing your potential while respecting your emotional well-being.
+                      From initial mood detection to continuous learning, TruFlo
+                      creates a{" "}
+                      <span className="bg-gradient-to-r from-purple-300 via-pink-300 to-blue-300 bg-clip-text text-transparent">
+                        personalized productivity ecosystem
+                      </span>{" "}
+                      that evolves with you, maximizing your potential while
+                      respecting your emotional well-being.
                     </p>
                   </div>
                 </div>
@@ -568,13 +620,14 @@ export default function TruFloLandingPage() {
                 <div className="relative">
                   <div className="relative z-10 py-8">
                     <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-r from-yellow-500/30 to-orange-500/30 rounded-full border-2 border-white/30 mb-8 shadow-xl">
-                      <span className="text-5xl">🌟</span>
+                      <span className="text-5xl">���</span>
                     </div>
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-2xl font-heading">
                       Trusted by Industry Leaders
                     </h2>
                     <p className="text-xl text-white/90 drop-shadow-lg font-body">
-                      See what thought leaders and innovators are saying about TruFlo's revolutionary approach to productivity.
+                      See what thought leaders and innovators are saying about
+                      TruFlo's revolutionary approach to productivity.
                     </p>
                   </div>
                 </div>
@@ -582,7 +635,10 @@ export default function TruFloLandingPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 {testimonials.map((testimonial, index) => (
-                  <Card key={index} className="glass-enhanced shadow-xl hover:scale-[1.02] transition-all duration-300">
+                  <Card
+                    key={index}
+                    className="glass-enhanced shadow-xl hover:scale-[1.02] transition-all duration-300"
+                  >
                     <CardContent className="p-8">
                       <div className="flex items-start space-x-6 mb-6">
                         <div className="flex-shrink-0">
@@ -604,11 +660,11 @@ export default function TruFloLandingPage() {
                           </p>
                         </div>
                       </div>
-                      
+
                       <blockquote className="text-white/90 text-lg italic mb-6 drop-shadow-sm leading-relaxed font-body">
                         "{testimonial.quote}"
                       </blockquote>
-                      
+
                       <div className="space-y-4">
                         <div className="p-4 bg-white/5 rounded-lg border border-white/10">
                           <h4 className="text-sm font-semibold text-white/90 mb-2 drop-shadow-sm font-ui">
@@ -630,13 +686,13 @@ export default function TruFloLandingPage() {
           <section id="about" className="section-spacing relative">
             {/* Dark overlay for problem section */}
             <div className="absolute inset-0 bg-black/40 z-0"></div>
-            
+
             <div className="container mx-auto px-4 relative z-10">
               <div className="max-w-6xl mx-auto">
                 <div className="glass-enhanced rounded-3xl p-12 md:p-16 lg:p-20 text-center shadow-2xl border-2 border-white/20 relative">
                   {/* Additional dark background for text content */}
                   <div className="absolute inset-0 bg-black/25 rounded-3xl blur-xl"></div>
-                  
+
                   <div className="space-y-12 relative z-10">
                     {/* Main Heading with Colorful Text */}
                     <div className="space-y-6">
@@ -653,10 +709,15 @@ export default function TruFloLandingPage() {
                         </span>
                         <span className="text-white">.</span>
                       </h2>
-                      
+
                       <p className="text-xl md:text-2xl text-white/90 drop-shadow-lg max-w-4xl mx-auto font-body">
-                        Traditional productivity apps ignore the most important factor: 
-                        <span className="font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent"> how you feel</span>.
+                        Traditional productivity apps ignore the most important
+                        factor:
+                        <span className="font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                          {" "}
+                          how you feel
+                        </span>
+                        .
                       </p>
                     </div>
 
@@ -666,7 +727,9 @@ export default function TruFloLandingPage() {
                         <Card className="p-8 hover glass-enhanced shadow-xl h-full border-2 border-red-400/20 hover:border-red-400/40 transition-all duration-300">
                           <div className="text-center space-y-6">
                             <div className="w-20 h-20 mx-auto bg-gradient-to-r from-red-500/20 to-red-600/20 rounded-full flex items-center justify-center border-2 border-red-400/30 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                              <span className="text-4xl drop-shadow-md">📉</span>
+                              <span className="text-4xl drop-shadow-md">
+                                📉
+                              </span>
                             </div>
                             <h3 className="text-xl font-bold drop-shadow-md font-heading">
                               <span className="bg-gradient-to-r from-red-400 to-red-500 bg-clip-text text-transparent">
@@ -674,7 +737,8 @@ export default function TruFloLandingPage() {
                               </span>
                             </h3>
                             <p className="text-white/80 drop-shadow-sm font-body leading-relaxed">
-                              You start with good intentions but lose motivation halfway through.
+                              You start with good intentions but lose motivation
+                              halfway through.
                             </p>
                           </div>
                         </Card>
@@ -684,7 +748,9 @@ export default function TruFloLandingPage() {
                         <Card className="p-8 hover glass-enhanced shadow-xl h-full border-2 border-orange-400/20 hover:border-orange-400/40 transition-all duration-300">
                           <div className="text-center space-y-6">
                             <div className="w-20 h-20 mx-auto bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-full flex items-center justify-center border-2 border-orange-400/30 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                              <span className="text-4xl drop-shadow-md">😞</span>
+                              <span className="text-4xl drop-shadow-md">
+                                😞
+                              </span>
                             </div>
                             <h3 className="text-xl font-bold drop-shadow-md font-heading">
                               <span className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
@@ -692,7 +758,8 @@ export default function TruFloLandingPage() {
                               </span>
                             </h3>
                             <p className="text-white/80 drop-shadow-sm font-body leading-relaxed">
-                              You know you're procrastinating but can't seem to stop.
+                              You know you're procrastinating but can't seem to
+                              stop.
                             </p>
                           </div>
                         </Card>
@@ -702,7 +769,9 @@ export default function TruFloLandingPage() {
                         <Card className="p-8 hover glass-enhanced shadow-xl h-full border-2 border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300">
                           <div className="text-center space-y-6">
                             <div className="w-20 h-20 mx-auto bg-gradient-to-r from-yellow-500/20 to-yellow-600/20 rounded-full flex items-center justify-center border-2 border-yellow-400/30 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                              <span className="text-4xl drop-shadow-md">🔄</span>
+                              <span className="text-4xl drop-shadow-md">
+                                🔄
+                              </span>
                             </div>
                             <h3 className="text-xl font-bold drop-shadow-md font-heading">
                               <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
@@ -710,7 +779,8 @@ export default function TruFloLandingPage() {
                               </span>
                             </h3>
                             <p className="text-white/80 drop-shadow-sm font-body leading-relaxed">
-                              Everything feels urgent, but nothing feels important.
+                              Everything feels urgent, but nothing feels
+                              important.
                             </p>
                           </div>
                         </Card>
@@ -723,18 +793,22 @@ export default function TruFloLandingPage() {
                         <div className="h-px bg-gradient-to-r from-transparent via-purple-400/60 to-transparent flex-1" />
                         <div className="relative">
                           <div className="w-16 h-16 bg-gradient-to-r from-purple-500/30 to-blue-500/30 rounded-full flex items-center justify-center border-2 border-white/20 backdrop-blur-sm">
-                            <span className="text-3xl animate-brain-pulse">💡</span>
+                            <span className="text-3xl animate-brain-pulse">
+                              💡
+                            </span>
                           </div>
                         </div>
                         <div className="h-px bg-gradient-to-r from-transparent via-purple-400/60 to-transparent flex-1" />
                       </div>
-                      
+
                       <p className="text-2xl md:text-3xl font-bold leading-relaxed drop-shadow-lg font-heading">
                         <span className="text-white">That's why </span>
                         <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
                           TruFlo adapts to your emotions
                         </span>
-                        <span className="text-white">, not the other way around.</span>
+                        <span className="text-white">
+                          , not the other way around.
+                        </span>
                       </p>
                     </div>
 
@@ -772,14 +846,19 @@ export default function TruFloLandingPage() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
                 {stats.map((stat, index) => (
-                  <Card key={index} className="p-6 animate-fade-in glass-enhanced shadow-xl hover:scale-105 transition-all duration-300">
+                  <Card
+                    key={index}
+                    className="p-6 animate-fade-in glass-enhanced shadow-xl hover:scale-105 transition-all duration-300"
+                  >
                     <div className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-4 drop-shadow-lg font-ui">
                       {stat.number}
                     </div>
-                    <p className="text-white/90 drop-shadow-md font-body text-sm leading-relaxed">{stat.label}</p>
+                    <p className="text-white/90 drop-shadow-md font-body text-sm leading-relaxed">
+                      {stat.label}
+                    </p>
                   </Card>
                 ))}
               </div>
@@ -799,7 +878,9 @@ export default function TruFloLandingPage() {
                       Competitive Edge
                     </h2>
                     <p className="text-xl text-white/90 drop-shadow-lg mb-8 font-body">
-                      TruFlo is the first platform that starts a productivity session based on how you feel at that moment—no one else does that.
+                      TruFlo is the first platform that starts a productivity
+                      session based on how you feel at that moment—no one else
+                      does that.
                     </p>
                   </div>
                 </div>
@@ -815,19 +896,24 @@ export default function TruFloLandingPage() {
                           Feature Comparison
                         </h3>
                         <p className="text-white/70 text-sm mt-1 font-body">
-                          See how TruFlo stacks up against traditional productivity apps
+                          See how TruFlo stacks up against traditional
+                          productivity apps
                         </p>
                       </div>
                       <div className="text-center">
                         <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-600/30 to-blue-600/30 px-4 py-2 rounded-full border border-white/20">
                           <span className="text-2xl">🚀</span>
-                          <span className="font-bold text-white font-ui">TruFlo</span>
+                          <span className="font-bold text-white font-ui">
+                            TruFlo
+                          </span>
                         </div>
                       </div>
                       <div className="text-center">
                         <div className="inline-flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full border border-white/20">
                           <span className="text-2xl">📱</span>
-                          <span className="font-medium text-white/70 font-ui">Others</span>
+                          <span className="font-medium text-white/70 font-ui">
+                            Others
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -836,7 +922,10 @@ export default function TruFloLandingPage() {
                   {/* Table Body */}
                   <div className="divide-y divide-white/10">
                     {comparisonData.map((row, index) => (
-                      <div key={index} className="p-6 hover:bg-white/5 transition-all duration-300 group">
+                      <div
+                        key={index}
+                        className="p-6 hover:bg-white/5 transition-all duration-300 group"
+                      >
                         <div className="grid grid-cols-4 gap-6 items-center">
                           {/* Category & Feature */}
                           <div className="col-span-2">
@@ -859,17 +948,23 @@ export default function TruFloLandingPage() {
 
                           {/* TruFlo Column */}
                           <div className="text-center">
-                            <div className={`inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-400/30 ${row.trufloColor}`}>
-                              <span className="text-lg">{row.trufloIcon}</span>
-                              <span className="font-semibold font-ui">{row.truflo}</span>
+                            <div
+                              className={`inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-400/30 ${row.trufloColor}`}
+                            >
+                              <span className="font-semibold font-ui">
+                                {row.truflo}
+                              </span>
                             </div>
                           </div>
 
                           {/* Others Column */}
                           <div className="text-center">
-                            <div className={`inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-white/5 border border-white/20 ${row.othersColor}`}>
-                              <span className="text-lg">{row.othersIcon}</span>
-                              <span className="font-semibold font-ui">{row.others}</span>
+                            <div
+                              className={`inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-white/5 border border-white/20 ${row.othersColor}`}
+                            >
+                              <span className="font-semibold font-ui">
+                                {row.others}
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -881,7 +976,10 @@ export default function TruFloLandingPage() {
                   <div className="bg-gradient-to-r from-green-500/10 to-teal-500/10 border-t border-white/20 p-6">
                     <div className="text-center">
                       <p className="text-white/90 font-medium font-body">
-                        <span className="text-green-400 font-bold">✅ TruFlo leads</span> in every category that matters for modern productivity
+                        <span className="text-green-400 font-bold">
+                          TruFlo leads!
+                        </span>{" "}
+                        in every category that matters for modern productivity
                       </p>
                     </div>
                   </div>
@@ -903,11 +1001,53 @@ export default function TruFloLandingPage() {
                       Ready to Transform Your Productivity?
                     </h2>
                     <p className="text-xl text-white/90 mb-8 drop-shadow-lg font-body">
-                      Join thousands of others who are already building better habits with TruFlo.
+                      Join thousands of others who are already building better
+                      habits with TruFlo.
                     </p>
-                    <p className="text-lg text-white/70 font-body">
-                      The future of productivity is here. Are you ready to unlock your true potential?
+                    <p className="text-lg text-white/70 mb-8 font-body">
+                      The future of productivity is here. Are you ready to
+                      unlock your true potential?
                     </p>
+
+                    {/* Join Waitlist Form */}
+                    <div className="max-w-md mx-auto">
+                      <form
+                        onSubmit={handleEmailSubmit}
+                        className="flex flex-col sm:flex-row gap-3"
+                      >
+                        <input
+                          type="email"
+                          placeholder="Enter your email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="flex-1 px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:border-purple-400/50 backdrop-blur-sm font-body"
+                          required
+                        />
+                        <button
+                          type="submit"
+                          disabled={isSubmitting}
+                          className="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-lg hover:from-purple-700 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-purple-400/50 transform hover:scale-105 transition-all duration-300 shadow-xl font-ui"
+                        >
+                          {isSubmitting ? "Joining..." : "Join Waitlist"}
+                        </button>
+                      </form>
+
+                      {submitted && (
+                        <div className="mt-4 p-3 bg-green-500/20 border border-green-400/30 rounded-lg text-center">
+                          <p className="text-green-300 font-medium font-body text-sm">
+                            🎉 You're on the list! We'll notify you as soon as
+                            TruFlo is available.
+                          </p>
+                        </div>
+                      )}
+
+                      <div className="mt-3 text-center">
+                        <p className="text-white/60 text-xs font-body">
+                          Join others who are already on the waitlist. No spam,
+                          just updates.
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -918,35 +1058,50 @@ export default function TruFloLandingPage() {
 
       {/* Waitlist Modal */}
       <Modal isOpen={showWaitlistModal} onClose={handleCloseModal}>
-        <Card className="glass-enhanced shadow-2xl border-white/30">
+        <Card className="glass-enhanced shadow-2xl border-emerald-400/30">
           <ModalHeader onClose={handleCloseModal}>
-            <h3 className="text-xl font-semibold text-white drop-shadow-md font-heading">
-              Join the Waitlist
-            </h3>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-gradient-to-r from-emerald-500/30 to-teal-500/30 rounded-full flex items-center justify-center border-2 border-emerald-400/30">
+                <span className="text-xl">📧</span>
+              </div>
+              <h3 className="text-xl font-semibold text-white drop-shadow-md font-heading">
+                Join the Waitlist
+              </h3>
+            </div>
           </ModalHeader>
-          
+
           <ModalContent>
             {submitted ? (
               <div className="text-center py-4">
-                <div className="text-green-400 mb-4 text-4xl drop-shadow-md">✓</div>
-                <h4 className="text-lg font-semibold text-white mb-2 font-heading">You're on the list!</h4>
+                <div className="w-16 h-16 mx-auto bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-full flex items-center justify-center border-2 border-emerald-400/30 mb-4">
+                  <span className="text-4xl">🎉</span>
+                </div>
+                <h4 className="text-lg font-semibold text-white mb-2 font-heading">
+                  You're on the list!
+                </h4>
                 <p className="text-white/80 mb-6 font-body">
-                  Thank you for joining our waitlist. You'll be among the first to know when TruFlo launches.
+                  Thank you for joining our waitlist. You'll be among the first
+                  to know when TruFlo launches.
                 </p>
                 <Button
                   onClick={handleCloseModal}
-                  variant="glass"
-                  className="w-full"
+                  className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700"
                 >
                   Close
                 </Button>
               </div>
             ) : (
               <div>
-                <p className="text-white/80 mb-6 text-center font-body">
-                  Be the first to experience mood-aware productivity. We'll notify you as soon as TruFlo is available.
-                </p>
-                
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 mx-auto bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-full flex items-center justify-center border-2 border-emerald-400/30 mb-4">
+                    <span className="text-3xl">🚀</span>
+                  </div>
+                  <p className="text-white/80 font-body">
+                    Be the first to experience mood-aware productivity. We'll
+                    notify you as soon as TruFlo is available.
+                  </p>
+                </div>
+
                 <form onSubmit={handleEmailSubmit} className="space-y-4">
                   <Input
                     type="email"
@@ -956,7 +1111,7 @@ export default function TruFloLandingPage() {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                   />
-                  
+
                   <div className="flex gap-3">
                     <Button
                       type="button"
@@ -969,16 +1124,21 @@ export default function TruFloLandingPage() {
                     <Button
                       type="submit"
                       loading={isSubmitting}
-                      className="flex-1"
+                      className="flex-1 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700"
                     >
                       Join Waitlist
                     </Button>
                   </div>
                 </form>
-                
-                <p className="text-xs text-white/60 text-center mt-4 font-body">
-                  We respect your privacy. No spam, just updates about TruFlo.
-                </p>
+
+                <div className="mt-4 text-center">
+                  <p className="text-xs text-white/60 font-body">
+                    Join others who are already on the waitlist
+                  </p>
+                  <p className="text-xs text-white/60 font-body">
+                    No spam, just updates about TruFlo
+                  </p>
+                </div>
               </div>
             )}
           </ModalContent>
