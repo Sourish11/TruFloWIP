@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
-import { db } from "../firebase";
 import { doc, setDoc, getDoc, query, collection, where, getDocs } from "firebase/firestore";
 import { Card, CardContent, CardHeader } from "../components/ui/Card";
 import { Button } from "../components/ui/Button";
