@@ -88,6 +88,7 @@ export default function Login() {
       <AccessCodeModal
         isOpen={showAccessCodeModal}
         onAccessGranted={handleAccessGranted}
+        onClose={() => setShowAccessCodeModal(false)}
       />
 
       {/* Only show login form if access is granted */}

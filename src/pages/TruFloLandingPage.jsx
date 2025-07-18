@@ -1018,8 +1018,9 @@ export default function TruFloLandingPage() {
             <div className="max-w-6xl mx-auto">
               <div className="glass-enhanced rounded-3xl overflow-hidden border-2 border-white/20 shadow-2xl">
                 {/* Table Header */}
-                <div className="bg-gradient-to-r from-purple-500/20 to-blue-500/20 border-b border-white/20 p-8">
-                  <div className="grid grid-cols-4 gap-6 items-center">
+                <div className="bg-gradient-to-r from-purple-500/20 to-blue-500/20 border-b border-white/20 p-4 md:p-8">
+                  {/* Desktop Header */}
+                  <div className="hidden md:grid grid-cols-4 gap-6 items-center">
                     <div className="col-span-2">
                       <h3 className="text-xl font-bold text-white font-heading">
                         Feature Comparison
@@ -1046,6 +1047,31 @@ export default function TruFloLandingPage() {
                       </div>
                     </div>
                   </div>
+
+                  {/* Mobile Header */}
+                  <div className="md:hidden text-center">
+                    <h3 className="text-lg font-bold text-white font-heading mb-2">
+                      Feature Comparison
+                    </h3>
+                    <p className="text-white/70 text-sm font-body mb-4">
+                      See how TruFlo stacks up against others
+                    </p>
+                    <div className="flex justify-center space-x-3">
+                      <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-600/30 to-blue-600/30 px-3 py-1 rounded-full border border-white/20">
+                        <span className="text-lg">🚀</span>
+                        <span className="font-bold text-white font-ui text-sm">
+                          TruFlo
+                        </span>
+                      </div>
+                      <span className="text-white/50 self-center">vs</span>
+                      <div className="inline-flex items-center space-x-2 bg-white/10 px-3 py-1 rounded-full border border-white/20">
+                        <span className="text-lg">📱</span>
+                        <span className="font-medium text-white/70 font-ui text-sm">
+                          Others
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Table Body */}
@@ -1053,9 +1079,10 @@ export default function TruFloLandingPage() {
                   {comparisonData.map((row, index) => (
                     <div
                       key={index}
-                      className="p-6 hover:bg-white/5 transition-all duration-300 group"
+                      className="p-4 md:p-6 hover:bg-white/5 transition-all duration-300 group"
                     >
-                      <div className="grid grid-cols-4 gap-6 items-center">
+                      {/* Desktop Layout */}
+                      <div className="hidden md:grid grid-cols-4 gap-6 items-center">
                         {/* Category & Feature */}
                         <div className="col-span-2">
                           <div className="flex items-center space-x-4">
@@ -1094,6 +1121,59 @@ export default function TruFloLandingPage() {
                             <span className="font-semibold font-ui">
                               {row.others}
                             </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Mobile Layout - Stacked */}
+                      <div className="md:hidden space-y-4">
+                        {/* Feature Header */}
+                        <div className="flex items-center space-x-3">
+                          <div className="w-8 h-8 bg-gradient-to-r from-white/10 to-white/5 rounded-lg flex items-center justify-center border border-white/20">
+                            <span className="text-sm font-bold text-white/70 font-ui">
+                              {index + 1}
+                            </span>
+                          </div>
+                          <div>
+                            <div className="text-xs font-semibold text-white/60 uppercase tracking-wider font-ui">
+                              {row.category}
+                            </div>
+                            <div className="text-white font-semibold font-body text-sm">
+                              {row.feature}
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Comparison Cards */}
+                        <div className="space-y-3">
+                          {/* TruFlo */}
+                          <div className="flex items-center justify-between bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-400/30 rounded-lg p-3">
+                            <div className="flex items-center space-x-2">
+                              <span className="text-lg">🚀</span>
+                              <span className="font-medium text-white font-ui text-sm">
+                                TruFlo
+                              </span>
+                            </div>
+                            <div
+                              className={`font-semibold font-ui text-sm ${row.trufloColor}`}
+                            >
+                              {row.truflo}
+                            </div>
+                          </div>
+
+                          {/* Others */}
+                          <div className="flex items-center justify-between bg-white/5 border border-white/20 rounded-lg p-3">
+                            <div className="flex items-center space-x-2">
+                              <span className="text-lg">📱</span>
+                              <span className="font-medium text-white/70 font-ui text-sm">
+                                Others
+                              </span>
+                            </div>
+                            <div
+                              className={`font-semibold font-ui text-sm ${row.othersColor}`}
+                            >
+                              {row.others}
+                            </div>
                           </div>
                         </div>
                       </div>

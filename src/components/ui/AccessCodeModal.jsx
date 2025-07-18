@@ -6,7 +6,7 @@ import { Input } from "./Input";
 // The universal access code for the application
 const TRUFLO_ACCESS_CODE = "TRUFLO2024";
 
-export default function AccessCodeModal({ isOpen, onAccessGranted }) {
+export default function AccessCodeModal({ isOpen, onAccessGranted, onClose }) {
   const [accessCode, setAccessCode] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -37,7 +37,15 @@ export default function AccessCodeModal({ isOpen, onAccessGranted }) {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
       <div className="w-full max-w-md mx-4">
         <Card className="glass-enhanced shadow-2xl border-2 border-purple-400/50 animate-fade-in">
-          <CardHeader className="text-center">
+          <CardHeader className="text-center relative">
+            {onClose && (
+              <button
+                onClick={onClose}
+                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/30 transition-all duration-200 flex items-center justify-center text-white/70 hover:text-white"
+              >
+                <span className="text-lg leading-none">×</span>
+              </button>
+            )}
             <div className="flex justify-center mb-4">
               <div className="w-16 h-16 bg-gradient-to-r from-purple-500/20 to-blue-500/20 border-2 border-purple-400/30 rounded-full flex items-center justify-center">
                 <span className="text-3xl">🔐</span>
