@@ -1,5 +1,5 @@
 import { db } from "../../firebase";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDocs, onSnapshot } from "firebase/firestore";
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { OrbitControls, Sphere, Html, Points, PointMaterial } from '@react-three/drei';
@@ -685,17 +685,13 @@ export default function Interactive3DEarth() {
   const [globalMoodCount, setGlobalMoodCount] = useState(0);
 
   useEffect(() => {
-    // Fetch total mood submissions from Firestore
-    const fetchGlobalMoodCount = async () => {
-      try {
-        const snapshot = await getDocs(collection(db, "globalMoods"));
-        setGlobalMoodCount(snapshot.size);
-      } catch (err) {
-        console.error("Failed to fetch global mood count:", err);
-      }
-    };
-    fetchGlobalMoodCount();
-  }, [userMoods]); // refetch when local moods change
+    // Listen for real-time updates to global mood submissions
+    const unsubscribe = onSnapshot(collection(db, "globalMoods"), (snapshot) => {
+      setGlobalMoodCount(snapshot.size);
+    });
+
+    return () => unsubscribe();
+  }, []); // refetch when local moods change
     
   const handleUnlock = () => {
     setIsUnlocked(true);
