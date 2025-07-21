@@ -4,6 +4,7 @@ import { doc, setDoc, getDoc, query, collection, where, getDocs } from "firebase
 import { Card, CardContent, CardHeader } from "../components/ui/Card";
 import { Button } from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
+import { db } from "../firebase";
 
 export default function ProfileSection() {
   const auth = getAuth();
