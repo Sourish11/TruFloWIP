@@ -71,6 +71,7 @@ export default function Signup() {
       <AccessCodeModal
         isOpen={showAccessCodeModal}
         onAccessGranted={handleAccessGranted}
+        onClose={() => setShowAccessCodeModal(false)}
       />
 
       {/* Only show signup form if access is granted */}
