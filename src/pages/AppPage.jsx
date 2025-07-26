@@ -1,6 +1,7 @@
 import { getAuth, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useNavigate, NavLink, Outlet, useLocation } from "react-router-dom";
+import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { Button } from "../components/ui/Button";
 import OnboardingModal from "../components/ui/OnboardingModal";
